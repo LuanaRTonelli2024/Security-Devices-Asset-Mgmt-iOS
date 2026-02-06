@@ -13,6 +13,31 @@
 		3D3D47A22F3509ED00E92517 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 3D3D47A12F3509ED00E92517 /* Preview Assets.xcassets */; };
 		3D3D47A42F3509ED00E92517 /* Persistence.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3D3D47A32F3509ED00E92517 /* Persistence.swift */; };
 		3D3D47A72F3509ED00E92517 /* Security_Devices_Asset_Mgmt_iOS.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 3D3D47A52F3509ED00E92517 /* Security_Devices_Asset_Mgmt_iOS.xcdatamodeld */; };
+		86C3A10E2F36551B0099A50C /* CodeScanner in Frameworks */ = {isa = PBXBuildFile; productRef = 86C3A10D2F36551B0099A50C /* CodeScanner */; };
+		86C3A1132F3671D80099A50C /* AuthManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 86C3A1122F3671D80099A50C /* AuthManager.swift */; };
+		86C3A1142F3671D80099A50C /* AuthGate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 86C3A1112F3671D80099A50C /* AuthGate.swift */; };
+		86C3A11A2F3671E80099A50C /* OnBoardingScrenView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 86C3A1192F3671E80099A50C /* OnBoardingScrenView.swift */; };
+		86C3A11B2F3671E80099A50C /* Company.swift in Sources */ = {isa = PBXBuildFile; fileRef = 86C3A1172F3671E80099A50C /* Company.swift */; };
+		86C3A11C2F3671E80099A50C /* Camera.swift in Sources */ = {isa = PBXBuildFile; fileRef = 86C3A1162F3671E80099A50C /* Camera.swift */; };
+		86C3A11D2F3671E80099A50C /* AppUser.swift in Sources */ = {isa = PBXBuildFile; fileRef = 86C3A1152F3671E80099A50C /* AppUser.swift */; };
+		86C3A12E2F3671F40099A50C /* CameraAddView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 86C3A1222F3671F40099A50C /* CameraAddView.swift */; };
+		86C3A12F2F3671F40099A50C /* CameraView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 86C3A1252F3671F40099A50C /* CameraView.swift */; };
+		86C3A1302F3671F40099A50C /* RegisterView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 86C3A12C2F3671F40099A50C /* RegisterView.swift */; };
+		86C3A1312F3671F40099A50C /* QRCodeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 86C3A12B2F3671F40099A50C /* QRCodeView.swift */; };
+		86C3A1322F3671F40099A50C /* CompanyAddView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 86C3A1262F3671F40099A50C /* CompanyAddView.swift */; };
+		86C3A1332F3671F40099A50C /* ProfileView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 86C3A12A2F3671F40099A50C /* ProfileView.swift */; };
+		86C3A1342F3671F40099A50C /* CameraDetailView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 86C3A1232F3671F40099A50C /* CameraDetailView.swift */; };
+		86C3A1352F3671F40099A50C /* FirebaseCameraView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 86C3A11F2F3671F40099A50C /* FirebaseCameraView.swift */; };
+		86C3A1362F3671F40099A50C /* LoginView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 86C3A1292F3671F40099A50C /* LoginView.swift */; };
+		86C3A1372F3671F40099A50C /* Validators.swift in Sources */ = {isa = PBXBuildFile; fileRef = 86C3A11E2F3671F40099A50C /* Validators.swift */; };
+		86C3A1382F3671F40099A50C /* FirebaseCompanyViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 86C3A1202F3671F40099A50C /* FirebaseCompanyViewModel.swift */; };
+		86C3A1392F3671F40099A50C /* CompanyView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 86C3A1272F3671F40099A50C /* CompanyView.swift */; };
+		86C3A13A2F3671F40099A50C /* HomeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 86C3A1282F3671F40099A50C /* HomeView.swift */; };
+		86C3A13B2F3671F40099A50C /* CameraEditView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 86C3A1242F3671F40099A50C /* CameraEditView.swift */; };
+		86DEB79C2F3520620024C9C1 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 86DEB79B2F3520620024C9C1 /* GoogleService-Info.plist */; };
+		86DEB7A02F3521120024C9C1 /* FirebaseAuth in Frameworks */ = {isa = PBXBuildFile; productRef = 86DEB79F2F3521120024C9C1 /* FirebaseAuth */; };
+		86DEB7A22F3521170024C9C1 /* FirebaseCore in Frameworks */ = {isa = PBXBuildFile; productRef = 86DEB7A12F3521170024C9C1 /* FirebaseCore */; };
+		86DEB7A42F35213D0024C9C1 /* FirebaseFirestore in Frameworks */ = {isa = PBXBuildFile; productRef = 86DEB7A32F35213D0024C9C1 /* FirebaseFirestore */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -23,6 +48,27 @@
 		3D3D47A12F3509ED00E92517 /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
 		3D3D47A32F3509ED00E92517 /* Persistence.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Persistence.swift; sourceTree = "<group>"; };
 		3D3D47A62F3509ED00E92517 /* Security_Devices_Asset_Mgmt_iOS.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = Security_Devices_Asset_Mgmt_iOS.xcdatamodel; sourceTree = "<group>"; };
+		86C3A1112F3671D80099A50C /* AuthGate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthGate.swift; sourceTree = "<group>"; };
+		86C3A1122F3671D80099A50C /* AuthManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthManager.swift; sourceTree = "<group>"; };
+		86C3A1152F3671E80099A50C /* AppUser.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppUser.swift; sourceTree = "<group>"; };
+		86C3A1162F3671E80099A50C /* Camera.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Camera.swift; sourceTree = "<group>"; };
+		86C3A1172F3671E80099A50C /* Company.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Company.swift; sourceTree = "<group>"; };
+		86C3A1192F3671E80099A50C /* OnBoardingScrenView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OnBoardingScrenView.swift; sourceTree = "<group>"; };
+		86C3A11E2F3671F40099A50C /* Validators.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Validators.swift; sourceTree = "<group>"; };
+		86C3A11F2F3671F40099A50C /* FirebaseCameraView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FirebaseCameraView.swift; sourceTree = "<group>"; };
+		86C3A1202F3671F40099A50C /* FirebaseCompanyViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FirebaseCompanyViewModel.swift; sourceTree = "<group>"; };
+		86C3A1222F3671F40099A50C /* CameraAddView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CameraAddView.swift; sourceTree = "<group>"; };
+		86C3A1232F3671F40099A50C /* CameraDetailView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CameraDetailView.swift; sourceTree = "<group>"; };
+		86C3A1242F3671F40099A50C /* CameraEditView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CameraEditView.swift; sourceTree = "<group>"; };
+		86C3A1252F3671F40099A50C /* CameraView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CameraView.swift; sourceTree = "<group>"; };
+		86C3A1262F3671F40099A50C /* CompanyAddView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CompanyAddView.swift; sourceTree = "<group>"; };
+		86C3A1272F3671F40099A50C /* CompanyView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CompanyView.swift; sourceTree = "<group>"; };
+		86C3A1282F3671F40099A50C /* HomeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeView.swift; sourceTree = "<group>"; };
+		86C3A1292F3671F40099A50C /* LoginView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginView.swift; sourceTree = "<group>"; };
+		86C3A12A2F3671F40099A50C /* ProfileView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileView.swift; sourceTree = "<group>"; };
+		86C3A12B2F3671F40099A50C /* QRCodeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QRCodeView.swift; sourceTree = "<group>"; };
+		86C3A12C2F3671F40099A50C /* RegisterView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegisterView.swift; sourceTree = "<group>"; };
+		86DEB79B2F3520620024C9C1 /* GoogleService-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -30,6 +76,10 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				86C3A10E2F36551B0099A50C /* CodeScanner in Frameworks */,
+				86DEB7A22F3521170024C9C1 /* FirebaseCore in Frameworks */,
+				86DEB7A02F3521120024C9C1 /* FirebaseAuth in Frameworks */,
+				86DEB7A42F35213D0024C9C1 /* FirebaseFirestore in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -40,6 +90,7 @@
 			isa = PBXGroup;
 			children = (
 				3D3D47992F3509E700E92517 /* Security Devices Asset Mgmt iOS */,
+				86DEB79E2F3521120024C9C1 /* Frameworks */,
 				3D3D47982F3509E700E92517 /* Products */,
 			);
 			sourceTree = "<group>";
@@ -61,6 +112,14 @@
 				3D3D47A32F3509ED00E92517 /* Persistence.swift */,
 				3D3D47A52F3509ED00E92517 /* Security_Devices_Asset_Mgmt_iOS.xcdatamodeld */,
 				3D3D47A02F3509ED00E92517 /* Preview Content */,
+				86DEB79B2F3520620024C9C1 /* GoogleService-Info.plist */,
+				86C3A1112F3671D80099A50C /* AuthGate.swift */,
+				86C3A1122F3671D80099A50C /* AuthManager.swift */,
+				86C3A1182F3671E80099A50C /* Models */,
+				86C3A1192F3671E80099A50C /* OnBoardingScrenView.swift */,
+				86C3A11E2F3671F40099A50C /* Validators.swift */,
+				86C3A1212F3671F40099A50C /* ViewModel */,
+				86C3A12D2F3671F40099A50C /* Views */,
 			);
 			path = "Security Devices Asset Mgmt iOS";
 			sourceTree = "<group>";
@@ -71,6 +130,50 @@
 				3D3D47A12F3509ED00E92517 /* Preview Assets.xcassets */,
 			);
 			path = "Preview Content";
+			sourceTree = "<group>";
+		};
+		86C3A1182F3671E80099A50C /* Models */ = {
+			isa = PBXGroup;
+			children = (
+				86C3A1152F3671E80099A50C /* AppUser.swift */,
+				86C3A1162F3671E80099A50C /* Camera.swift */,
+				86C3A1172F3671E80099A50C /* Company.swift */,
+			);
+			path = Models;
+			sourceTree = "<group>";
+		};
+		86C3A1212F3671F40099A50C /* ViewModel */ = {
+			isa = PBXGroup;
+			children = (
+				86C3A11F2F3671F40099A50C /* FirebaseCameraView.swift */,
+				86C3A1202F3671F40099A50C /* FirebaseCompanyViewModel.swift */,
+			);
+			path = ViewModel;
+			sourceTree = "<group>";
+		};
+		86C3A12D2F3671F40099A50C /* Views */ = {
+			isa = PBXGroup;
+			children = (
+				86C3A1222F3671F40099A50C /* CameraAddView.swift */,
+				86C3A1232F3671F40099A50C /* CameraDetailView.swift */,
+				86C3A1242F3671F40099A50C /* CameraEditView.swift */,
+				86C3A1252F3671F40099A50C /* CameraView.swift */,
+				86C3A1262F3671F40099A50C /* CompanyAddView.swift */,
+				86C3A1272F3671F40099A50C /* CompanyView.swift */,
+				86C3A1282F3671F40099A50C /* HomeView.swift */,
+				86C3A1292F3671F40099A50C /* LoginView.swift */,
+				86C3A12A2F3671F40099A50C /* ProfileView.swift */,
+				86C3A12B2F3671F40099A50C /* QRCodeView.swift */,
+				86C3A12C2F3671F40099A50C /* RegisterView.swift */,
+			);
+			path = Views;
+			sourceTree = "<group>";
+		};
+		86DEB79E2F3521120024C9C1 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			name = Frameworks;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -117,6 +220,10 @@
 				Base,
 			);
 			mainGroup = 3D3D478E2F3509E600E92517;
+			packageReferences = (
+				86DEB79D2F3520D00024C9C1 /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */,
+				86C3A10C2F36551B0099A50C /* XCRemoteSwiftPackageReference "CodeScanner" */,
+			);
 			productRefGroup = 3D3D47982F3509E700E92517 /* Products */;
 			projectDirPath = "";
 			projectRoot = "";
@@ -133,6 +240,7 @@
 			files = (
 				3D3D47A22F3509ED00E92517 /* Preview Assets.xcassets in Resources */,
 				3D3D479F2F3509ED00E92517 /* Assets.xcassets in Resources */,
+				86DEB79C2F3520620024C9C1 /* GoogleService-Info.plist in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -145,7 +253,27 @@
 			files = (
 				3D3D47A42F3509ED00E92517 /* Persistence.swift in Sources */,
 				3D3D479D2F3509E700E92517 /* ContentView.swift in Sources */,
+				86C3A1132F3671D80099A50C /* AuthManager.swift in Sources */,
+				86C3A1142F3671D80099A50C /* AuthGate.swift in Sources */,
+				86C3A12E2F3671F40099A50C /* CameraAddView.swift in Sources */,
+				86C3A12F2F3671F40099A50C /* CameraView.swift in Sources */,
+				86C3A1302F3671F40099A50C /* RegisterView.swift in Sources */,
+				86C3A1312F3671F40099A50C /* QRCodeView.swift in Sources */,
+				86C3A1322F3671F40099A50C /* CompanyAddView.swift in Sources */,
+				86C3A1332F3671F40099A50C /* ProfileView.swift in Sources */,
+				86C3A1342F3671F40099A50C /* CameraDetailView.swift in Sources */,
+				86C3A1352F3671F40099A50C /* FirebaseCameraView.swift in Sources */,
+				86C3A1362F3671F40099A50C /* LoginView.swift in Sources */,
+				86C3A1372F3671F40099A50C /* Validators.swift in Sources */,
+				86C3A1382F3671F40099A50C /* FirebaseCompanyViewModel.swift in Sources */,
+				86C3A1392F3671F40099A50C /* CompanyView.swift in Sources */,
+				86C3A13A2F3671F40099A50C /* HomeView.swift in Sources */,
+				86C3A13B2F3671F40099A50C /* CameraEditView.swift in Sources */,
 				3D3D479B2F3509E700E92517 /* Security_Devices_Asset_Mgmt_iOSApp.swift in Sources */,
+				86C3A11A2F3671E80099A50C /* OnBoardingScrenView.swift in Sources */,
+				86C3A11B2F3671E80099A50C /* Company.swift in Sources */,
+				86C3A11C2F3671E80099A50C /* Camera.swift in Sources */,
+				86C3A11D2F3671E80099A50C /* AppUser.swift in Sources */,
 				3D3D47A72F3509ED00E92517 /* Security_Devices_Asset_Mgmt_iOS.xcdatamodeld in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -350,6 +478,48 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
+
+/* Begin XCRemoteSwiftPackageReference section */
+		86C3A10C2F36551B0099A50C /* XCRemoteSwiftPackageReference "CodeScanner" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/twostraws/CodeScanner";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 2.5.2;
+			};
+		};
+		86DEB79D2F3520D00024C9C1 /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/firebase/firebase-ios-sdk";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 12.4.0;
+			};
+		};
+/* End XCRemoteSwiftPackageReference section */
+
+/* Begin XCSwiftPackageProductDependency section */
+		86C3A10D2F36551B0099A50C /* CodeScanner */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 86C3A10C2F36551B0099A50C /* XCRemoteSwiftPackageReference "CodeScanner" */;
+			productName = CodeScanner;
+		};
+		86DEB79F2F3521120024C9C1 /* FirebaseAuth */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 86DEB79D2F3520D00024C9C1 /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */;
+			productName = FirebaseAuth;
+		};
+		86DEB7A12F3521170024C9C1 /* FirebaseCore */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 86DEB79D2F3520D00024C9C1 /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */;
+			productName = FirebaseCore;
+		};
+		86DEB7A32F35213D0024C9C1 /* FirebaseFirestore */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 86DEB79D2F3520D00024C9C1 /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */;
+			productName = FirebaseFirestore;
+		};
+/* End XCSwiftPackageProductDependency section */
 
 /* Begin XCVersionGroup section */
 		3D3D47A52F3509ED00E92517 /* Security_Devices_Asset_Mgmt_iOS.xcdatamodeld */ = {
