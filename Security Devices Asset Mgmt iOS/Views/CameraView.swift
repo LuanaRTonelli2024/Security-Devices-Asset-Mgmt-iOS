@@ -75,6 +75,7 @@ struct CameraView: View {
                 }
             }
         }
+        //TEST
         .sheet(isPresented: $showNewCamera){
             CameraAddView(company: company)
         }
