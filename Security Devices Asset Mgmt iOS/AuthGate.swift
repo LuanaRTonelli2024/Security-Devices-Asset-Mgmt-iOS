@@ -12,17 +12,12 @@ struct AuthGate: View {
     @EnvironmentObject var authManager: AuthManager
     
     var body: some View {
-        NavigationView {
-            if authManager.user != nil {
-                HomeView()
-            }
-            else {
-                OnBoardingScrenView()
-            }
+        
+        if authManager.user != nil {
+            HomeView()
+        }
+        else {
+            ContentView()
         }
     }
-}
-
-#Preview {
-    AuthGate()
 }

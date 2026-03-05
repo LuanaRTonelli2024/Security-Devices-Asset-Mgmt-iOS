@@ -5,6 +5,7 @@
 //  Created by user285344 on 11/18/25.
 //
 
+import SwiftUI
 import Foundation
 import Combine
 import FirebaseAuth
@@ -18,6 +19,8 @@ class AuthManager: ObservableObject {
     @Published var user: User? // User -> FirebaseAuth.User
     
     private let db = Firestore.firestore()
+    
+    @AppStorage("token")  var token: String = ""
     
     @Published var currentUser: AppUser?
     
@@ -72,23 +75,21 @@ class AuthManager: ObservableObject {
                 completion(.failure(error))
             }
             else if let user = result?.user {
+                
+                //get token
+                user.getIDToken { token, error in
+                    if let token = token {
+                        self.token = token
+                    }
+                }
+
                 self.user = user
                 completion(.success(user))
             }
         }
     }
     
-    //logout/signout
-//    func logout(){
-//        do {
-//            try Auth.auth().signOut()
-//            self.user = nil
-//        }
-//        catch {
-//            print("Error Signing out: \(error.localizedDescription)")
-//        }
-//    }
-    
+    //logout
     func logout() -> Result<Void, Error> {
         do {
             try Auth.auth().signOut()

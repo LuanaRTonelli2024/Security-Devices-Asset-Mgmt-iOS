@@ -6,121 +6,71 @@
 //
 
 import SwiftUI
-import FirebaseCore
 import CodeScanner
 
 struct CameraView: View {
     
+    @EnvironmentObject var authManager: AuthManager
+    
+    //@StateObject var companies = CompanyViewModel()
+    @StateObject var cameras = CameraViewModel()
+    
     let company: Company //companyID
     
-    @StateObject var firebaseManager = FirebaseCameraViewModel.shared //Firebase
     //Toolbar
     @State private var showNewCamera = false
     @State private var isShowingScanner = false
+    @State private var showEditCamera = false
+    //@State private var selectedCamera: Camera?
+    
     //Scan QR code
     @State private var scannedCode: String?
     
+    //Filter camera
+    //let indices = filteredCameraIndices()
     
     var body: some View {
         VStack{
             List {
-                if filteredCameraIndices.isEmpty, scannedCode != nil {
-                    Text("No camera found for this QR code.")
-                        .foregroundColor(.red)
-                } else {
-                    ForEach(filteredCameraIndices, id: \.self) { index in
-                        NavigationLink(
-                            destination: CameraDetailView(company: company, camera: $firebaseManager.cameras[index])
-                        ) {
-                            HStack(alignment: .center, spacing: 12){
-                                Image(systemName: "web.camera")
-                                    .font(.system(size: 24))
-                                    .foregroundStyle(.blue)
-                                
-                                VStack(alignment: .leading, spacing: 4) {
-                                    Text(firebaseManager.cameras[index].name)
-                                        .font(.headline)
-                                    Text(firebaseManager.cameras[index].location)
-                                        .font(.subheadline)
-                                        .foregroundStyle(.secondary)
-                                }
-                            }
-                        }
-                    }
-                    .onDelete(perform: deleteCamera)
+                ForEach(cameras.cameraData) { camera in
+                    
+                    CameraRowView(camera: camera, cameras: cameras, company: company)
                 }
+                .onDelete(perform: deleteCamera)
             }
         }
+        .padding(10)
         .onAppear {
-            firebaseManager.fetchCamerasCompany(for: company)
-        }
-        .onChange(of: firebaseManager.cameras.count) {
-            if scannedCode != nil {
-                scannedCode = nil
+            Task {
+                await cameras.fetchCamerasByCompany(token: authManager.token, companyId: company.id ?? "")
             }
-        }
-        .toolbar {
-            ToolbarItem(placement: .topBarTrailing) {
-                HStack{
-                    Button {
-                        isShowingScanner = true
-                    } label: {
-                        Image(systemName: "qrcode.viewfinder")
-                    }
-                    Button {
-                        showNewCamera = true
-                    } label: {
-                        Image(systemName: "plus")
-                    }
-                }
-            }
-        }
-        .sheet(isPresented: $showNewCamera){
-            CameraAddView(company: company)
-        }
-        .sheet(isPresented: $isShowingScanner) {
-            CodeScannerView(
-                codeTypes: [.qr],
-                simulatedData: "gmssxysHg6SDXix2o9Gg",
-                completion: handleScan
-            )
         }
         .navigationTitle("Cameras")
-        .padding()
+        .toolbar {
+            ToolbarItem(placement: .topBarTrailing) {
+                Button {
+                    showNewCamera = true
+                } label: {
+                    Image(systemName: "plus")
+                }
+            }
+        }
+        .sheet(isPresented: $showNewCamera) {
+            NavigationStack {
+                CameraAddView(company: company)
+                    .environmentObject(authManager)
+            }
+        }
     }
+    
     
     private func deleteCamera(at offsets: IndexSet) {
-        offsets.forEach { index in
-            let camera = firebaseManager.cameras[index]
-            
-            firebaseManager.deleteCamera(camera: camera)
-        }
-    }
-    
-    private var filteredCameraIndices: [Int] {
-        if let scannedCode = scannedCode,
-           let camera = firebaseManager.getCameraById(scannedCode),
-           let index = firebaseManager.cameras.firstIndex(where: { $0.id == camera.id }) {
-            return [index]
-        } else if scannedCode != nil {
-            return []
-        } else {
-            return Array(firebaseManager.cameras.indices)
-        }
-    }
-
-    func handleScan(result: Result<ScanResult, ScanError>) {
-        isShowingScanner = false
-        switch result {
-        case .success(let scanResult):
-            scannedCode = scanResult.string
-        case .failure(let error):
-            print("Scanning failed: \(error.localizedDescription)")
+        Task {
+            for index in offsets {
+                let cam = cameras.cameraData[index]
+                await cameras.deleteCamera(id: cam.id, token: authManager.token)
+            }
         }
     }
 }
 
-
-//#Preview {
-//    CameraView()
-//}

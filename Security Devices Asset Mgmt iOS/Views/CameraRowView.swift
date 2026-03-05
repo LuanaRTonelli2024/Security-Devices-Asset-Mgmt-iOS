@@ -8,11 +8,30 @@
 import SwiftUI
 
 struct CameraRowView: View {
+    
+    let camera: Camera
+    @ObservedObject var cameras: CameraViewModel
+    let company: Company
+
     var body: some View {
-        Text(/*@START_MENU_TOKEN@*/"Hello, World!"/*@END_MENU_TOKEN@*/)
+        NavigationLink(
+            destination: CameraDetailView(company: company, cameras: cameras, camera: camera)
+        ) {
+            HStack(alignment: .center, spacing: 12) {
+                Image(systemName: "web.camera")
+                    .font(.system(size: 24))
+                    .foregroundStyle(.blue)
+
+                VStack(alignment: .leading, spacing: 4) {
+                    Text(camera.name ?? "Unknow")
+                        .font(.headline)
+                    Text(camera.location ?? "Unknow")
+                        .font(.subheadline)
+                        .foregroundStyle(.secondary)
+                }
+            }
+        }
     }
 }
 
-#Preview {
-    CameraRowView()
-}
+

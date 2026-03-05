@@ -7,36 +7,43 @@
 
 
 import SwiftUI
-import FirebaseCore
+
 
 struct CompanyAddView: View {
     
+    @EnvironmentObject var authManager: AuthManager
     @Environment(\.dismiss) var dismiss
-    @StateObject var firebaseManager = FirebaseCompanyViewModel.shared
+    
+    @ObservedObject var companies: CompanyViewModel
     @State private var newCompanyName: String = ""
     
     
     var body: some View {
-        VStack {
-            Form {
-                Section("Basic Info"){
-                    TextField("Name: ", text: $newCompanyName)
-                }
-                
-                
-                Button ("Save") {
-                    firebaseManager.addCompany(
-                        name: newCompanyName
-                    )
-                    dismiss()
+        Form {
+            Section("Basic Info"){
+                TextField("Name: ", text: $newCompanyName)
+            }
+        }
+        .navigationTitle("New Company")
+        .navigationBarTitleDisplayMode(.inline)
+        .toolbar {
+//            // Cancel button
+//            ToolbarItem(placement: .cancellationAction) {
+//                Button("Cancel") {
+//                    dismiss()
+//                }
+//            }
+            
+            // Save button
+            ToolbarItem(placement: .confirmationAction) {
+                Button("Save") {
+                    Task {
+                        await companies.createCompany(token: authManager.token, name: newCompanyName)
+                        dismiss()
+                    }
                 }
                 .disabled(newCompanyName.isEmpty)
             }
         }
     }
 }
-
-
-//#Preview {
-//    CompanyAddView()
-//}

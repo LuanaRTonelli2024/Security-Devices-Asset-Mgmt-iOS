@@ -6,26 +6,25 @@
 //
 
 import SwiftUI
-import FirebaseCore
 
 struct CameraEditView: View {
     
-    let company: Company
-        
+    @EnvironmentObject var authManager: AuthManager
     @Environment(\.dismiss) var dismiss
-
-    @StateObject var firebaseManager = FirebaseCameraViewModel.shared
-        
-    //Info Camera
-    @Binding var camera: Camera
-
+    
+    @ObservedObject var cameras: CameraViewModel
+    @State var camera: Camera
+    let company: Company
+    
     @State private var selectedTab = "Info" //picker
-
+    
+    @State private var editedName: String = ""
+    
     var body: some View {
         VStack {
             Picker("", selection: $selectedTab) {
                 Text("Info").tag("Info")
-                Text("QR Code").tag("QR Code")
+                //Text("QR Code").tag("QR Code")
                 Text("Reference View").tag("Reference View")
             }
             .pickerStyle(.segmented)
@@ -36,58 +35,55 @@ struct CameraEditView: View {
                     Section("Basic Info"){
                         HStack {
                             Text("Name: ")
-                            TextField("", text: $camera.name)
+                            TextField("", text: $editedName)
                         }
                         HStack {
                             Text("Location: ")
-                            TextField("", text: $camera.location)
+                            //TextField("", text: $camera.location)
                         }
                     }
                     Section("Network Info"){
                         HStack{
                             Text("IP Address: ")
-                            TextField("", text: $camera.ipAddress)
+                            //TextField("", text: $camera.ipAddress)
                         }
                         HStack {
                             Text("Subnet Mask: ")
-                            TextField("", text: $camera.subnetMask)
+                            //TextField("", text: $camera.subnetMask)
                         }
                         HStack{
                             Text("Default Gateway: ")
-                            TextField("", text: $camera.defaultGateway)
+                            //TextField("", text: $camera.defaultGateway)
                         }
                     }
                     Section("Admin Info"){
                         HStack{
                             Text("User Name: ")
-                            TextField("", text: $camera.userName)
+                            //TextField("", text: $camera.userName)
                         }
                         HStack {
                             Text("Password: ")
-                            TextField("", text: $camera.password)
+                            //TextField("", text: $camera.password)
                         }
                     }
-                    
-                    Button ("Save") {
-                        firebaseManager.updateCamera(camera: camera)
-                        dismiss()
-                    }
-                    .disabled(camera.name.isEmpty || camera.location.isEmpty)
                 }
-            }
-            else if selectedTab == "QR Code" {
-                VStack {
-                    //Text("QR Code View")
-                    if let id = camera.id {
-                        QRCodeView(data: id)
-                    } else {
-                        Text("Camera ID not available")
-                            .foregroundColor(.red)
+                .navigationTitle("Edit Camera")
+                .navigationBarTitleDisplayMode(.inline)
+                .toolbar {
+                    ToolbarItem(placement: .confirmationAction) {
+                        Button ("Save") {
+                            Task {
+                                await cameras.updateCamera(
+                                    id: camera.id ?? "",
+                                    newName: camera.name ?? "",
+                                    token: authManager.token
+                                )
+                                dismiss()
+                            }
+                        }
+                        .disabled(camera.name.isEmpty || camera.location.isEmpty)
                     }
-            
-                    Spacer()
                 }
-                .padding()
             }
             else {
                 VStack {
@@ -98,10 +94,5 @@ struct CameraEditView: View {
                 .padding()
             }
         }
-        .padding()
     }
 }
-
-//#Preview {
-//    CameraEditView()
-//}

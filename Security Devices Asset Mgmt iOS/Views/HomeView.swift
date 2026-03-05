@@ -6,7 +6,7 @@
 //
 
 import SwiftUI
-import FirebaseAuth
+//import FirebaseAuth
 //import FirebaseCore
 //import FirebaseFirestore
 
@@ -14,9 +14,9 @@ struct HomeView: View {
     
     
     @EnvironmentObject var authManager: AuthManager
-    @StateObject var firebaseManager = FirebaseCompanyViewModel.shared
+    @StateObject var companies = CompanyViewModel()
     
-    enum Tab { case home, companies, profile}
+    enum Tab { case home, scan, companies, profile}
     
     @State private var selected: Tab = .home
     @State private var isSearching: Bool = false //for the search box
@@ -35,7 +35,7 @@ struct HomeView: View {
                             Text("Welcome \(authManager.currentUser?.displayName ?? "User")")
                                 .font(.headline)
                                 .background(Color(.systemBackground))
-                                                            
+                            
                             Text("Please select the company:")
                                 .font(.headline)
                                 .background(Color(.systemBackground))
@@ -44,21 +44,35 @@ struct HomeView: View {
                         .padding(.top, 30)
                         .onAppear {
                             authManager.fetchCurrentAppUser { _ in }
+                            
+                            let token = authManager.token
+                            if !token.isEmpty {
+                                Task {
+                                    await companies.fetchCompanies(token: authManager.token)
+                                }
+                            }
                         }
-
-                        List(firebaseManager.companies) { company in
-                            NavigationLink(destination: CameraView(company: company)) {
-                                Label(company.name, systemImage: "building")
-                                    .font(.body)
+                        
+                        List{
+                            ForEach(companies.companyData){
+                                company in
+                                NavigationLink(destination: CameraView(company: company)) {
+                                    Label(company.name ?? "", systemImage: "building")
+                                        .font(.body)
+                                }
                             }
                         }
                     }
+                    
+                case .scan:
+                    CompanyView()
                     
                 case .companies:
                     CompanyView()
                     
                 case .profile:
                     ProfileView()
+                    
                 }
             }
             .ignoresSafeArea(.keyboard, edges: .bottom)
@@ -72,6 +86,12 @@ struct HomeView: View {
                     TabButton(title: "Home", system: "house.fill", active: selected == .home) {
                         withAnimation(.easeInOut) {
                             selected = .home
+                        }
+                    }
+                    
+                    TabButton(title: "Scan", system: "building.2.fill", active: selected == .scan) {
+                        withAnimation(.easeInOut) {
+                            selected = .scan
                         }
                     }
                     
@@ -93,12 +113,13 @@ struct HomeView: View {
                     Spacer()
                     
                 }
-                .padding(.horizontal, 16)
-                .padding(.vertical, 12)
+                //.padding(.horizontal, 16)
+                //.padding(.vertical, 12)
                 .background(.ultraThinMaterial)
                 .shadow(color: .black.opacity(0.12), radius: 20, x: 0, y: 8)
-                .padding(.horizontal)
-            }.padding(.top, 0)
+                //.padding(.horizontal)
+            }
+            //.padding(.top, 0)
         }
     }
 }
