@@ -6,36 +6,42 @@
 //
 
 import Foundation
-import FirebaseFirestore
 
 struct Camera: Identifiable, Codable {
-
-    @DocumentID var id: String? //firestone will give the id when we upload the id when we upload it to the server
-    var name: String
-    var location: String
-    //var latitude: Double
-    //var longitude: Double
-    //var model: String
-    //var serialNumber: String
-    //var warranty: String
-    var ipAddress: String
-    var subnetMask: String
-    var defaultGateway: String
-    //var hostName: String
-    var userName: String
-    var password: String
-    //var switchName: String
+    let id: String?
+    let name: String?
+    let location: String?
+    let ipAddress: String?
+    let subnetMask: String?
+    let defaultGateway: String?
+    let userName: String?
+    let password: String?
+    let companyId: String?
     
-    //var switchPort: String
-    var companyId: String
+    enum CodingKeys: String, CodingKey {
+        case id = "_id"
+        case name
+        case location
+        case ipAddress
+        case subnetMask
+        case defaultGateway
+        case userName
+        case password
+        case companyId
+    }
 }
 
-// codable ---> encode and decode your data
 
-// firebase ----> ToDo (Stream of data) --> convert it to a ToDo Model
+struct CameraListResponse: Codable {
+    let cameras: [Camera]
+}
 
-// App --> Firebase --> ToDo Model ---> Stream of data
 
-// Codable to handle this automatically
+struct DeleteCameraResponse: Codable {
+    let cameraId: String
+}
 
- 
+struct CameraResponse: Codable {
+    let cameras: [Camera]
+}
+

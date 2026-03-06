@@ -9,8 +9,15 @@ import SwiftUI
 
 struct CameraDetailView: View {
     
+    @EnvironmentObject var authManager: AuthManager
+
     let company: Company
-    @Binding var camera: Camera
+    
+    @ObservedObject var cameras: CameraViewModel
+    
+    let camera: Camera
+    //@State var camera: Camera
+    //@Binding var camera: Camera
     @State private var selectedTab = "Info" //picker
     @State private var showEdit = false //toolbar
     
@@ -28,17 +35,17 @@ struct CameraDetailView: View {
             if selectedTab == "Info" {
                 Form {
                     Section("Basic Info"){
-                        Text("Name:  \(camera.name)")
-                        Text("Location: \(camera.location)")
+                        Text("Name:  \(camera.name ?? "Unknown")")
+                        Text("Location: \(camera.location ?? "Unknown")")
                     }
                     Section("Network Info"){
-                        Text("IP Address: \(camera.ipAddress)")
-                        Text("Subnet Mask: \(camera.subnetMask)")
-                        Text("Default Gateway: \(camera.defaultGateway)")
+                        Text("IP Address: \(camera.ipAddress ?? "-")")
+                        Text("Subnet Mask: \(camera.subnetMask ?? "-")")
+                        Text("Default Gateway: \(camera.defaultGateway ?? "-")")
                     }
                     Section("Admin Info"){
-                        Text("User Name: \(camera.userName)")
-                        Text("Password: \(camera.password)")
+                        Text("User Name: \(camera.userName ?? "-")")
+                        Text("Password: \(camera.password ?? "-")")
                     }
                 }
             }
@@ -76,12 +83,24 @@ struct CameraDetailView: View {
             }
         }
         .sheet(isPresented: $showEdit){
-            CameraEditView(company: company, camera: $camera)
+            NavigationStack {
+                CameraEditView(camera: camera) { newName, newLocation, newIp, newSubnet, newGateway, newUser, newPass in
+                    Task {
+                        await cameras.updateCamera(
+                            token: authManager.token,
+                            id: camera.id ?? "",
+                            newName: newName,
+                            newLocation: newLocation,
+                            newIpAddress: newIp,
+                            newSubnetMask: newSubnet,
+                            newDefaultGateway: newGateway,
+                            newUserName: newUser,
+                            newPassword: newPass,
+                            for: company
+                        )
+                    }
+                }
+            }
         }
     }
 }
-
-
-//#Preview {
-//    CameraDetailView()
-//}

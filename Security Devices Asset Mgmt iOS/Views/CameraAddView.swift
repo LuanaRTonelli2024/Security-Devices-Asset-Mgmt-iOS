@@ -6,15 +6,17 @@
 //
 
 import SwiftUI
-import FirebaseCore
+
 
 struct CameraAddView: View {
     
+    @EnvironmentObject var authManager: AuthManager
+    @Environment(\.dismiss) var dismiss
+    
+    @ObservedObject var cameras: CameraViewModel
+    
     let company: Company
     
-    @Environment(\.dismiss) var dismiss
-
-    @StateObject var firebaseManager = FirebaseCameraViewModel.shared
     
     //Info Camera
     @State private var newCameraName: String = ""
@@ -36,7 +38,7 @@ struct CameraAddView: View {
             }
             .pickerStyle(.segmented)
             .padding()
-                    
+            
             if selectedTab == "Info" {
                 Form {
                     Section("Basic Info"){
@@ -52,9 +54,30 @@ struct CameraAddView: View {
                         TextField("User Name: ", text: $newCameraUserName)
                         TextField("Password: ", text: $newCameraPassword)
                     }
-                    
-                    Button ("Save") {
-                        firebaseManager.addCamera(
+                }
+            } else if selectedTab == "QR Code" {
+                VStack {
+                    Text("QR Code will be available after saving.")
+                        .font(.headline)
+                    Spacer()
+                }
+                .padding()
+            }
+            else {
+                VStack {
+                    Text("Reference Camera View is not available.")
+                        .font(.headline)
+                    Spacer()
+                }
+                .padding()
+            }
+        }
+        .toolbar {
+            ToolbarItem(placement: .confirmationAction) {
+                Button("Save"){
+                    Task {
+                        await cameras.createCamera(
+                            token: authManager.token,
                             name: newCameraName,
                             location: newCameraLocation,
                             ipAddress: newCameraIPAddress,
@@ -66,30 +89,10 @@ struct CameraAddView: View {
                         )
                         dismiss()
                     }
-                    .disabled(newCameraName.isEmpty || newCameraLocation.isEmpty)
                 }
-            }
-            else if selectedTab == "QR Code" {
-                VStack {
-                    Text("QR Code will be available after saving.")
-                        .font(.headline)
-                    Spacer()
-                    }
-                    .padding()
-            }
-            else {
-                VStack {
-                    Text("Reference Camera View is not available.")
-                        .font(.headline)
-                    Spacer()
-                }
-                .padding()
+                .disabled(newCameraName.isEmpty || newCameraLocation.isEmpty)
             }
         }
         .padding()
-    }
+   }
 }
-
-//#Preview {
-//    CameraAddView()
-//}

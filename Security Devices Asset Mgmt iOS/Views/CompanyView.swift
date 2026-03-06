@@ -6,56 +6,69 @@
 //
 
 import SwiftUI
-import FirebaseCore
-import FirebaseFirestore
+
 
 struct CompanyView: View {
     
-    @StateObject var firebaseManager = FirebaseCompanyViewModel.shared //Firebase
-    @State private var showNewCamera = false
-
+    @EnvironmentObject var authManager: AuthManager
+    @StateObject var companies = CompanyViewModel()
     
-       
+    //Toolbar
+    @State private var showNewCompany = false
+    
     var body: some View {
-        VStack{
-            Text("Companies")
-                .font(.headline)
-                .background(Color(.systemBackground))
-            
+        VStack (spacing: 20){
             List {
-                ForEach(firebaseManager.companies) { company in
-                    HStack {
-                        Text(company.name)
-        
-                        Spacer()
+                ForEach(companies.companyData) { company in
+                    NavigationLink {
+                        CompanyEditView(company: company) { newName in
+                                Task {
+                                    await companies.updateCompany(
+                                        token: authManager.token,
+                                        id: company.id ?? "",
+                                        newName: newName
+                                    )
+                                }
+                            }
+                    } label: {
+                        HStack {
+                            Text(company.name ?? "")
+                            Spacer()
+                        }
                     }
-                }
-            }
-            .onAppear {
-                firebaseManager.fetchCompanies()
-            }
-            .toolbar {
-                ToolbarItem(placement: .topBarTrailing) {
-                    HStack{
-                        Button {
-                            showNewCamera = true
+                    .swipeActions {
+                        Button(role: .destructive) {
+                            Task {
+                                await companies.deleteCompany(token: authManager.token, id: company.id)
+                            }
                         } label: {
-                            Image(systemName: "plus")
+                            Label("Delete", systemImage: "trash")
                         }
                     }
                 }
             }
-            .sheet(isPresented: $showNewCamera){
-                CompanyAddView()
+        }
+        .onAppear {
+            Task {
+                await companies.fetchCompanies(token: authManager.token)
             }
-            //.navigationTitle("Companies")
-            .padding()
-            
+        }
+        .navigationTitle("Companies")
+        .toolbar {
+            ToolbarItem(placement: .topBarTrailing) {
+                HStack{
+                    Button {
+                        showNewCompany = true
+                    } label: {
+                        Image(systemName: "plus")
+                    }
+                }
+            }
+        }
+        .sheet(isPresented: $showNewCompany){
+            NavigationStack {
+                CompanyAddView(companies: companies).environmentObject(authManager)
+            }
         }
     }
 }
-
-
-//#Preview {
-//    CompanyView()
-//}
