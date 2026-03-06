@@ -17,7 +17,7 @@ class CameraViewModel: ObservableObject {
     func fetchCamerasByCompany(token: String, companyId: String) async {
         
         guard let response: CameraListResponse = await WebService().sendRequest(
-            fromUrl: "https://special-meme-x5g5p995xjrf6vv-5000.app.github.dev/cameras/company/\(companyId)",
+            fromUrl: "\(APIConstants.baseURL)/cameras/company/\(companyId)",
             method: .GET)
         else{
             return
@@ -48,7 +48,7 @@ class CameraViewModel: ObservableObject {
                           companyId: company.id)
         
         if let result: Camera = await WebService().sendRequest(
-            fromUrl: "https://special-meme-x5g5p995xjrf6vv-5000.app.github.dev/cameras/",
+            fromUrl: "\(APIConstants.baseURL)/cameras/",
             method: .POST,
             body: body
         ) {
@@ -57,6 +57,8 @@ class CameraViewModel: ObservableObject {
             await fetchCamerasByCompany(token: token, companyId: company.id ?? "")
         }
     }
+    
+    
     
     //delete
     func deleteCamera(id: String?, token: String) async {
@@ -67,7 +69,7 @@ class CameraViewModel: ObservableObject {
         }
         
         if let result: DeleteCameraResponse = await WebService().sendRequest(
-            fromUrl: "https://special-meme-x5g5p995xjrf6vv-5000.app.github.dev/camera/\(id)",
+            fromUrl: "\(APIConstants.baseURL)/camera/\(id)",
             method: .DELETE
         ) {
             print("Deleted camera: \(result.cameraId)")
@@ -104,7 +106,7 @@ class CameraViewModel: ObservableObject {
         )
         
         if let result: Camera = await WebService().sendRequest(
-            fromUrl: "https://special-meme-x5g5p995xjrf6vv-5000.app.github.dev/cameras/\(id)",
+            fromUrl: "\(APIConstants.baseURL)/cameras/\(id)",
             method: .PATCH,
             body: body
         ) {
@@ -115,10 +117,14 @@ class CameraViewModel: ObservableObject {
     }
     
     
+    
+    
+    
+    
     func fetchCameraById(token: String, cameraId: String) async {
         
         guard let response: Camera = await WebService().sendRequest(
-            fromUrl: "https://special-meme-x5g5p995xjrf6vv-5000.app.github.dev/cameras/\(cameraId)",
+            fromUrl: "\(APIConstants.baseURL)/cameras/\(cameraId)",
             method: .GET)
         else{
             return
