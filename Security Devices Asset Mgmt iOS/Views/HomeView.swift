@@ -6,9 +6,6 @@
 //
 
 import SwiftUI
-//import FirebaseAuth
-//import FirebaseCore
-//import FirebaseFirestore
 
 struct HomeView: View {
     
@@ -146,7 +143,3 @@ struct TabButton: View {
         }.buttonStyle(.plain)
     }
 }
-    
-//#Preview {
-//    HomeView()
-//}

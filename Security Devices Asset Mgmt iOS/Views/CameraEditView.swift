@@ -10,88 +10,63 @@ import SwiftUI
 struct CameraEditView: View {
     
     @EnvironmentObject var authManager: AuthManager
+    
     @Environment(\.dismiss) var dismiss
     
-    @ObservedObject var cameras: CameraViewModel
-    @State var camera: Camera
-    let company: Company
+    var camera: Camera
     
-    @State private var selectedTab = "Info" //picker
+    @State var name: String
+    @State var location: String
+    @State var ipAddress: String
+    @State var subnetMask: String
+    @State var defaultGateway: String
+    @State var userName: String
+    @State var password: String
     
-    @State private var editedName: String = ""
+    var onUpdate: (String, String, String, String, String, String, String) -> Void
+    
+    init(camera: Camera,
+         onUpdate: @escaping (String, String, String, String, String, String, String) -> Void) {
+        
+        self.camera = camera
+        
+        _name = State(initialValue: camera.name ?? "")
+        _location = State(initialValue: camera.location ?? "")
+        _ipAddress = State(initialValue: camera.ipAddress ?? "")
+        _subnetMask = State(initialValue: camera.subnetMask ?? "")
+        _defaultGateway = State(initialValue: camera.defaultGateway ?? "")
+        _userName = State(initialValue: camera.userName ?? "")
+        _password = State(initialValue: camera.password ?? "")
+        
+        self.onUpdate = onUpdate
+    }
     
     var body: some View {
-        VStack {
-            Picker("", selection: $selectedTab) {
-                Text("Info").tag("Info")
-                //Text("QR Code").tag("QR Code")
-                Text("Reference View").tag("Reference View")
+        Form {
+            Section("Edit Camera") {
+                TextField("Name", text: $name)
+                TextField("Location", text: $location)
+                TextField("IP Address", text: $ipAddress)
+                TextField("Subnet Mask", text: $subnetMask)
+                TextField("Default Gateway", text: $defaultGateway)
+                TextField("User Name", text: $userName)
+                SecureField("Password", text: $password)
             }
-            .pickerStyle(.segmented)
-            .padding()
-            
-            if selectedTab == "Info" {
-                Form {
-                    Section("Basic Info"){
-                        HStack {
-                            Text("Name: ")
-                            TextField("", text: $editedName)
-                        }
-                        HStack {
-                            Text("Location: ")
-                            //TextField("", text: $camera.location)
-                        }
-                    }
-                    Section("Network Info"){
-                        HStack{
-                            Text("IP Address: ")
-                            //TextField("", text: $camera.ipAddress)
-                        }
-                        HStack {
-                            Text("Subnet Mask: ")
-                            //TextField("", text: $camera.subnetMask)
-                        }
-                        HStack{
-                            Text("Default Gateway: ")
-                            //TextField("", text: $camera.defaultGateway)
-                        }
-                    }
-                    Section("Admin Info"){
-                        HStack{
-                            Text("User Name: ")
-                            //TextField("", text: $camera.userName)
-                        }
-                        HStack {
-                            Text("Password: ")
-                            //TextField("", text: $camera.password)
-                        }
-                    }
+        }
+        //.navigationTitle("Edit Camera")
+        .toolbar{
+            ToolbarItem(placement: .topBarTrailing) {
+                Button("Save") {
+                    onUpdate(name,
+                             location,
+                             ipAddress,
+                             subnetMask,
+                             defaultGateway,
+                             userName,
+                             password)
+                    dismiss()
                 }
-                .navigationTitle("Edit Camera")
-                .navigationBarTitleDisplayMode(.inline)
-                .toolbar {
-                    ToolbarItem(placement: .confirmationAction) {
-                        Button ("Save") {
-                            Task {
-                                await cameras.updateCamera(
-                                    id: camera.id ?? "",
-                                    newName: camera.name ?? "",
-                                    token: authManager.token
-                                )
-                                dismiss()
-                            }
-                        }
-                        .disabled(camera.name.isEmpty || camera.location.isEmpty)
-                    }
-                }
-            }
-            else {
-                VStack {
-                    Text("Reference Camera View")
-                        .font(.headline)
-                    Spacer()
-                }
-                .padding()
+                .disabled(name.isEmpty || location.isEmpty)
             }
         }
     }

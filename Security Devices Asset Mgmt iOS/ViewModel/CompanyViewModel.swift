@@ -46,7 +46,7 @@ class CompanyViewModel: ObservableObject {
     
     
     //delete
-    func deleteCompany(id: String?, token: String) async {
+    func deleteCompany(token: String, id: String?) async {
         
         guard let id = id else {
             print("Error: Company ID is nil.")
@@ -68,7 +68,7 @@ class CompanyViewModel: ObservableObject {
     
     
     //update
-    func updateCompany(id: String, newName: String, token: String) async {
+    func updateCompany(token: String, id: String, newName: String) async {
         
         let body = Company(id: nil, name: newName)
         

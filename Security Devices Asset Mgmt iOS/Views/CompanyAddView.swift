@@ -27,12 +27,6 @@ struct CompanyAddView: View {
         .navigationTitle("New Company")
         .navigationBarTitleDisplayMode(.inline)
         .toolbar {
-//            // Cancel button
-//            ToolbarItem(placement: .cancellationAction) {
-//                Button("Cancel") {
-//                    dismiss()
-//                }
-//            }
             
             // Save button
             ToolbarItem(placement: .confirmationAction) {

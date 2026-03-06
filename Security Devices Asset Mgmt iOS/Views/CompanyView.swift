@@ -11,7 +11,6 @@ import SwiftUI
 struct CompanyView: View {
     
     @EnvironmentObject var authManager: AuthManager
-    
     @StateObject var companies = CompanyViewModel()
     
     //Toolbar
@@ -22,8 +21,15 @@ struct CompanyView: View {
             List {
                 ForEach(companies.companyData) { company in
                     NavigationLink {
-                        CompanyEditView(companies: companies, company: company)
-                            .environmentObject(authManager)
+                        CompanyEditView(company: company) { newName in
+                                Task {
+                                    await companies.updateCompany(
+                                        token: authManager.token,
+                                        id: company.id ?? "",
+                                        newName: newName
+                                    )
+                                }
+                            }
                     } label: {
                         HStack {
                             Text(company.name ?? "")
@@ -33,7 +39,7 @@ struct CompanyView: View {
                     .swipeActions {
                         Button(role: .destructive) {
                             Task {
-                                await companies.deleteCompany(id: company.id, token: authManager.token)
+                                await companies.deleteCompany(token: authManager.token, id: company.id)
                             }
                         } label: {
                             Label("Delete", systemImage: "trash")

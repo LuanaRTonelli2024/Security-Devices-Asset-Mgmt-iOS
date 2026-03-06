@@ -13,7 +13,7 @@ struct Company: Identifiable, Codable {
     
     enum CodingKeys: String, CodingKey {
         case id = "_id"
-        //case name
+        case name
     }
 }
 

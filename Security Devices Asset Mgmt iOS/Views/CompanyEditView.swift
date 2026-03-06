@@ -10,42 +10,35 @@ import SwiftUI
 struct CompanyEditView: View {
     
     @EnvironmentObject var authManager: AuthManager
-    @Environment(\.dismiss) var dismiss
-        
-    @ObservedObject var companies: CompanyViewModel
-    @State var company: Company
     
-    @State private var editedName: String = ""
-
+    @Environment(\.dismiss) var dismiss
+    
+    var company: Company
+    @State var name: String
+    
+    var onUpdate: (String) -> Void
+    
+    init(company: Company, onUpdate: @escaping(String) -> Void) {
+        self.company = company
+        
+        _name = State(initialValue: company.name ?? "")
+        self.onUpdate = onUpdate
+    }
+    
     var body: some View {
         Form {
             Section("Basic Info") {
-                TextField("Company name", text: $editedName)
+                TextField("Company name", text: $name)
             }
         }
-        .navigationTitle("Edit Company")
-        .navigationBarTitleDisplayMode(.inline)
-        .onAppear{
-            editedName = company.name ?? ""
-        }
+        //.navigationTitle("Edit Company")
         .toolbar {
-            
-            //ToolbarItem(placement: .cancellationAction) {
-            //    Button("Cancel") { dismiss() }
-            //}
-            
-            ToolbarItem(placement: .confirmationAction) {
+            ToolbarItem(placement: .topBarTrailing) {
                 Button("Save") {
-                    Task {
-                        await companies.updateCompany(
-                            id: company.id ?? "",
-                            newName: company.name ?? "",
-                            token: authManager.token
-                        )
-                        dismiss()
-                    }
+                    onUpdate(name)
+                    dismiss()
                 }
-                .disabled(editedName.isEmpty)
+                .disabled(name.isEmpty)
             }
         }
     }

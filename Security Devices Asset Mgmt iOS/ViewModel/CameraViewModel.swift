@@ -92,15 +92,16 @@ class CameraViewModel: ObservableObject {
                       newPassword: String,
                       for company: Company) async {
         
-        let body = Camera(id: nil,
-                          name: newName,
+        let body = Camera (id: nil,
+                           name: newName,
                           location: newLocation,
                           ipAddress: newIpAddress,
                           subnetMask: newSubnetMask,
                           defaultGateway: newDefaultGateway,
                           userName: newUserName,
                           password: newPassword,
-                          companyId: company.id)
+                           companyId: nil
+        )
         
         if let result: Camera = await WebService().sendRequest(
             fromUrl: "https://special-meme-x5g5p995xjrf6vv-5000.app.github.dev/cameras/\(id)",

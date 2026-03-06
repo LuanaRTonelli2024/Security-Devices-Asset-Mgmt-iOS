@@ -11,8 +11,6 @@ import CodeScanner
 struct CameraView: View {
     
     @EnvironmentObject var authManager: AuthManager
-    
-    //@StateObject var companies = CompanyViewModel()
     @StateObject var cameras = CameraViewModel()
     
     let company: Company //companyID
@@ -33,7 +31,6 @@ struct CameraView: View {
         VStack{
             List {
                 ForEach(cameras.cameraData) { camera in
-                    
                     CameraRowView(camera: camera, cameras: cameras, company: company)
                 }
                 .onDelete(perform: deleteCamera)
@@ -57,7 +54,7 @@ struct CameraView: View {
         }
         .sheet(isPresented: $showNewCamera) {
             NavigationStack {
-                CameraAddView(company: company)
+                CameraAddView(cameras: cameras, company: company)
                     .environmentObject(authManager)
             }
         }

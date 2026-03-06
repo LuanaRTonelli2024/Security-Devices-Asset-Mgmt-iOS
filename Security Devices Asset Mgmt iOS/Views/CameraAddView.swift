@@ -6,7 +6,7 @@
 //
 
 import SwiftUI
-//import FirebaseCore
+
 
 struct CameraAddView: View {
     
@@ -17,7 +17,6 @@ struct CameraAddView: View {
     
     let company: Company
     
-    //@StateObject var firebaseManager = FirebaseCameraViewModel.shared
     
     //Info Camera
     @State private var newCameraName: String = ""
@@ -39,81 +38,61 @@ struct CameraAddView: View {
             }
             .pickerStyle(.segmented)
             .padding()
+            
+            if selectedTab == "Info" {
+                Form {
+                    Section("Basic Info"){
+                        TextField("Name: ", text: $newCameraName)
+                        TextField("Location: ", text: $newCameraLocation)
+                    }
+                    Section("Network Info"){
+                        TextField("IP Address: ", text: $newCameraIPAddress)
+                        TextField("Subnet Mask: ", text: $newCameraSubnetMask)
+                        TextField("Default Gateway: ", text: $newCameraDefaultGateway)
+                    }
+                    Section("Admin Info"){
+                        TextField("User Name: ", text: $newCameraUserName)
+                        TextField("Password: ", text: $newCameraPassword)
+                    }
+                }
+            } else if selectedTab == "QR Code" {
+                VStack {
+                    Text("QR Code will be available after saving.")
+                        .font(.headline)
+                    Spacer()
+                }
+                .padding()
+            }
+            else {
+                VStack {
+                    Text("Reference Camera View is not available.")
+                        .font(.headline)
+                    Spacer()
+                }
+                .padding()
+            }
         }
         .toolbar {
             ToolbarItem(placement: .confirmationAction) {
-                Task {
-                    await cameras.createCamera(
-                        token: authManager.token,
-                        name: newCameraName,
-                        location: newCameraLocation,
-                        ipAddress: newCameraIPAddress,
-                        subnetMask: newCameraSubnetMask,
-                        defaultGateway: newCameraDefaultGateway,
-                        userName: newCameraUserName,
-                        password: newCameraPassword)
-                        //for: companyId)
-                    dismiss()
-                }
-                
-                if selectedTab == "Info" {
-                    Form {
-                        Section("Basic Info"){
-                            TextField("Name: ", text: $newCameraName)
-                            TextField("Location: ", text: $newCameraLocation)
-                        }
-                        Section("Network Info"){
-                            TextField("IP Address: ", text: $newCameraIPAddress)
-                            TextField("Subnet Mask: ", text: $newCameraSubnetMask)
-                            TextField("Default Gateway: ", text: $newCameraDefaultGateway)
-                        }
-                        Section("Admin Info"){
-                            TextField("User Name: ", text: $newCameraUserName)
-                            TextField("Password: ", text: $newCameraPassword)
-                        }
-                        
-                        //Button ("Save") {
-                            //firebaseManager.addCamera(
-                                //name: newCameraName,
-                                //location: newCameraLocation,
-                                //ipAddress: newCameraIPAddress,
-                                //subnetMask: newCameraSubnetMask,
-                                //defaultGateway: newCameraDefaultGateway,
-                                //userName: newCameraUserName,
-                                //password: newCameraPassword,
-                                //for: company
-                            //)
-                            //dismiss()
-                        }
-                        .disabled(newCameraName.isEmpty || newCameraLocation.isEmpty)
+                Button("Save"){
+                    Task {
+                        await cameras.createCamera(
+                            token: authManager.token,
+                            name: newCameraName,
+                            location: newCameraLocation,
+                            ipAddress: newCameraIPAddress,
+                            subnetMask: newCameraSubnetMask,
+                            defaultGateway: newCameraDefaultGateway,
+                            userName: newCameraUserName,
+                            password: newCameraPassword,
+                            for: company
+                        )
+                        dismiss()
                     }
                 }
-//                else if selectedTab == "QR Code" {
-//                    VStack {
-//                        Text("QR Code will be available after saving.")
-//                            .font(.headline)
-//                        Spacer()
-//                        }
-//                        .padding()
-//                }
-                else {
-                    VStack {
-                        Text("Reference Camera View is not available.")
-                            .font(.headline)
-                        Spacer()
-                    }
-                    .padding()
-                }
-
+                .disabled(newCameraName.isEmpty || newCameraLocation.isEmpty)
             }
-            
-        }
-
         }
         .padding()
    }
 }
-
-//#Preview {
-//    CameraAddView()
-//}

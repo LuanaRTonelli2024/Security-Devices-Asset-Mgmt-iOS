@@ -41,3 +41,7 @@ struct DeleteCameraResponse: Codable {
     let cameraId: String
 }
 
+struct CameraResponse: Codable {
+    let cameras: [Camera]
+}
+

@@ -170,15 +170,15 @@
 				86C3A1232F3671F40099A50C /* CameraDetailView.swift */,
 				86C3A1242F3671F40099A50C /* CameraEditView.swift */,
 				86C3A1252F3671F40099A50C /* CameraView.swift */,
-				86C3A1262F3671F40099A50C /* CompanyAddView.swift */,
+				DEC8D7282F58F7F40059A6AB /* CameraRowView.swift */,
 				86C3A1272F3671F40099A50C /* CompanyView.swift */,
+				86C3A1262F3671F40099A50C /* CompanyAddView.swift */,
+				DE9EE3BF2F529FFE00A992FE /* CompanyEditView.swift */,
 				86C3A1282F3671F40099A50C /* HomeView.swift */,
 				86C3A1292F3671F40099A50C /* LoginView.swift */,
 				86C3A12A2F3671F40099A50C /* ProfileView.swift */,
 				86C3A12B2F3671F40099A50C /* QRCodeView.swift */,
 				86C3A12C2F3671F40099A50C /* RegisterView.swift */,
-				DE9EE3BF2F529FFE00A992FE /* CompanyEditView.swift */,
-				DEC8D7282F58F7F40059A6AB /* CameraRowView.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";
