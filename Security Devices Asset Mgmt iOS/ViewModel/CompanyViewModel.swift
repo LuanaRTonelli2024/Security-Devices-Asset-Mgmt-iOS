@@ -18,7 +18,7 @@ class CompanyViewModel: ObservableObject {
     func fetchCompanies(token: String) async {
         
         guard let response: CompanyResponse = await WebService().sendRequest(
-            fromUrl: "https://special-meme-x5g5p995xjrf6vv-5000.app.github.dev/companies/",
+            fromUrl: "\(APIConstants.baseURL)/companies/",
             method: .GET)
         else{
             return
@@ -34,7 +34,7 @@ class CompanyViewModel: ObservableObject {
         let body = Company(id: nil, name: name)
         
         if let result: Company = await WebService().sendRequest(
-            fromUrl: "https://special-meme-x5g5p995xjrf6vv-5000.app.github.dev/companies/",
+            fromUrl: "\(APIConstants.baseURL)/companies/",
             method: .POST,
             body: body
         ) {
@@ -54,7 +54,7 @@ class CompanyViewModel: ObservableObject {
         }
 
         if let result: DeleteCompanyResponse = await WebService().sendRequest(
-               fromUrl: "https://special-meme-x5g5p995xjrf6vv-5000.app.github.dev/companies/\(id)",
+               fromUrl: "\(APIConstants.baseURL)/companies/\(id)",
                method: .DELETE
            ) {
                print("Deleted company: \(result.companyId)")
@@ -73,7 +73,7 @@ class CompanyViewModel: ObservableObject {
         let body = Company(id: nil, name: newName)
         
         if let result: Company = await WebService().sendRequest(
-               fromUrl: "https://special-meme-x5g5p995xjrf6vv-5000.app.github.dev/companies/\(id)",
+               fromUrl: "\(APIConstants.baseURL)/companies/\(id)",
                method: .PATCH,
                body: body
            ) {

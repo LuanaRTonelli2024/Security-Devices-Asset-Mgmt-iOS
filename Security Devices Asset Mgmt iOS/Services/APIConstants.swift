@@ -6,3 +6,7 @@
 //
 
 import Foundation
+
+struct APIConstants {
+    static let baseURL = "https://special-meme-x5g5p995xjrf6vv-5000.app.github.dev"
+}
