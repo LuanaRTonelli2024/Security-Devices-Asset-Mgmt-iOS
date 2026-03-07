@@ -29,9 +29,9 @@ class CompanyViewModel: ObservableObject {
     
     
     //create
-    func createCompany(token: String, name: String) async {
+    func createCompany(token: String, name: String, address: String? = nil, contact: String? = nil) async {
         
-        let body = Company(id: nil, name: name)
+        let body = Company(id: nil, name: name, address: address, contact: contact)
         
         if let result: Company = await WebService().sendRequest(
             fromUrl: "\(APIConstants.baseURL)/companies/",
@@ -68,9 +68,9 @@ class CompanyViewModel: ObservableObject {
     
     
     //update
-    func updateCompany(token: String, id: String, newName: String) async {
+    func updateCompany(token: String, id: String, newName: String, newAddress: String?, newContact: String?) async {
         
-        let body = Company(id: nil, name: newName)
+        let body = Company(id: nil, name: newName, address: newAddress, contact: newContact)
         
         if let result: Company = await WebService().sendRequest(
                fromUrl: "\(APIConstants.baseURL)/companies/\(id)",

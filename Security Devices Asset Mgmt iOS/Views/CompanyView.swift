@@ -21,20 +21,21 @@ struct CompanyView: View {
             List {
                 ForEach(companies.companyData) { company in
                     NavigationLink {
-                        CompanyEditView(company: company) { newName in
-                                Task {
-                                    await companies.updateCompany(
-                                        token: authManager.token,
-                                        id: company.id ?? "",
-                                        newName: newName
-                                    )
-                                }
+                        CompanyEditView(company: company) { newName, newAddress, newContact in
+                            Task {
+                                await companies.updateCompany(
+                                    token: authManager.token,
+                                    id: company.id ?? "",
+                                    newName: newName,
+                                    newAddress: newAddress,
+                                    newContact: newContact
+                                    
+                                )
                             }
-                    } label: {
-                        HStack {
-                            Text(company.name ?? "")
-                            Spacer()
                         }
+                        .environmentObject(authManager)
+                    } label: {
+                        Label(company.name ?? "", systemImage: "building")
                     }
                     .swipeActions {
                         Button(role: .destructive) {
@@ -53,9 +54,10 @@ struct CompanyView: View {
                 await companies.fetchCompanies(token: authManager.token)
             }
         }
-        .navigationTitle("Companies")
+        //        .navigationTitle("Companies")
+        //        Spacer()
         .toolbar {
-            ToolbarItem(placement: .topBarTrailing) {
+            ToolbarItem(placement: .confirmationAction) {
                 HStack{
                     Button {
                         showNewCompany = true
