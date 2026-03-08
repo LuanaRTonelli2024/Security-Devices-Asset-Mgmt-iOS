@@ -44,20 +44,28 @@ struct ScanView: View {
                         }
                         .buttonStyle(.borderedProminent)
                     }
+                    .frame(maxWidth: .infinity, maxHeight: .infinity)
+                    .background(.ultraThinMaterial)
+                }
+            }
+            .navigationTitle("Scan QR")
+            .navigationDestination(isPresented: $ShowCamera) {
+                if let camera = cameraFound {
+                    CameraDetailView(company: <#Company#>, cameras: <#CameraViewModel#>, camera: <#Camera#>)
                 }
             }
         }
     }
     
     func handleScan(result: Result<ScanResult, ScanError>) {
-            isShowingScanner = false
-            switch result {
-            case .success(let scanResult):
-                scannedCode = scanResult.string
-            case .failure(let error):
-                print("Scanning failed: \(error.localizedDescription)")
-            }
+        isShowingScanner = false
+        switch result {
+        case .success(let scanResult):
+            scannedCode = scanResult.string
+        case .failure(let error):
+            print("Scanning failed: \(error.localizedDescription)")
         }
+    }
 }
 
 #Preview {
