@@ -55,7 +55,7 @@ struct HomeView: View {
                     }
                     
                 case .scan:
-                    CompanyView()
+                    ScanView()
                     
                     
                 case .profile:

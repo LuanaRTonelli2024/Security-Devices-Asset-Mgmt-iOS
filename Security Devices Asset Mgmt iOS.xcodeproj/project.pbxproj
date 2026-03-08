@@ -36,6 +36,7 @@
 		86DEB7A22F3521170024C9C1 /* FirebaseCore in Frameworks */ = {isa = PBXBuildFile; productRef = 86DEB7A12F3521170024C9C1 /* FirebaseCore */; };
 		86DEB7A42F35213D0024C9C1 /* FirebaseFirestore in Frameworks */ = {isa = PBXBuildFile; productRef = 86DEB7A32F35213D0024C9C1 /* FirebaseFirestore */; };
 		CD0339EE2F5CAF6100B771EA /* DataHolder.swift in Sources */ = {isa = PBXBuildFile; fileRef = CD0339ED2F5CAF6100B771EA /* DataHolder.swift */; };
+		CD0339F92F5D082D00B771EA /* ScanView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CD0339F82F5D082D00B771EA /* ScanView.swift */; };
 		DE190D7E2F524C7000B0C1C6 /* CameraViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = DE190D7D2F524C7000B0C1C6 /* CameraViewModel.swift */; };
 		DE9EE3C02F529FFE00A992FE /* CompanyEditView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DE9EE3BF2F529FFE00A992FE /* CompanyEditView.swift */; };
 		DEA4F9562F4E2181005371C3 /* NetworkError.swift in Sources */ = {isa = PBXBuildFile; fileRef = DEA4F9552F4E2181005371C3 /* NetworkError.swift */; };
@@ -71,6 +72,7 @@
 		86C3A12C2F3671F40099A50C /* RegisterView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegisterView.swift; sourceTree = "<group>"; };
 		86DEB79B2F3520620024C9C1 /* GoogleService-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		CD0339ED2F5CAF6100B771EA /* DataHolder.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DataHolder.swift; sourceTree = "<group>"; };
+		CD0339F82F5D082D00B771EA /* ScanView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ScanView.swift; sourceTree = "<group>"; };
 		DE190D7D2F524C7000B0C1C6 /* CameraViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CameraViewModel.swift; sourceTree = "<group>"; };
 		DE9EE3BF2F529FFE00A992FE /* CompanyEditView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CompanyEditView.swift; sourceTree = "<group>"; };
 		DEA4F9552F4E2181005371C3 /* NetworkError.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkError.swift; sourceTree = "<group>"; };
@@ -184,6 +186,7 @@
 				86C3A12A2F3671F40099A50C /* ProfileView.swift */,
 				86C3A12B2F3671F40099A50C /* QRCodeView.swift */,
 				86C3A12C2F3671F40099A50C /* RegisterView.swift */,
+				CD0339F82F5D082D00B771EA /* ScanView.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -280,6 +283,7 @@
 				86C3A1132F3671D80099A50C /* AuthManager.swift in Sources */,
 				86C3A1142F3671D80099A50C /* AuthGate.swift in Sources */,
 				86C3A12E2F3671F40099A50C /* CameraAddView.swift in Sources */,
+				CD0339F92F5D082D00B771EA /* ScanView.swift in Sources */,
 				86C3A12F2F3671F40099A50C /* CameraView.swift in Sources */,
 				86C3A1302F3671F40099A50C /* RegisterView.swift in Sources */,
 				86C3A1312F3671F40099A50C /* QRCodeView.swift in Sources */,
