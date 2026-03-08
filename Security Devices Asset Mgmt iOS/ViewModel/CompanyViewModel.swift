@@ -8,7 +8,7 @@
 
 import Foundation
 import Combine //Observable Object
-    
+import CoreData
 
 class CompanyViewModel: ObservableObject {
     

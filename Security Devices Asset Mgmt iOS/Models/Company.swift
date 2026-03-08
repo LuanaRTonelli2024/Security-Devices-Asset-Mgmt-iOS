@@ -8,7 +8,7 @@
 import Foundation
 
 struct Company: Identifiable, Codable {
-    var id: String?
+    var id: String
     var name: String
     var address: String?
     var contact: String?
