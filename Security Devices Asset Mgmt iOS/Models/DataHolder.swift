@@ -15,11 +15,20 @@ final class DataHolder: ObservableObject {
     @Published var companies: [CompanyEntity] = []
     
     init(_ context: NSManagedObjectContext) {
-        refreshCompanies(context)
+        refreshAll(context)
     }
     
-    func refreshCameras(forCompany company: CompanyEntity, _ context: NSManagedObjectContext){
-        cameras = fetchCameras(forCompany: company, context)
+    func refreshAll(_ context: NSManagedObjectContext) {
+        refreshCompanies(context)
+        refreshCameras(context)
+    }
+    
+    func refreshCameras(_ context: NSManagedObjectContext) {
+        cameras = fetchCameras(context)
+    }
+    
+    func refreshCamerasByC (forCompany company: CompanyEntity, _ context: NSManagedObjectContext){
+        cameras = fetchCamerasByC(forCompany: company, context)
     }
     
     func refreshCompanies(_ context: NSManagedObjectContext){
@@ -27,8 +36,14 @@ final class DataHolder: ObservableObject {
     }
     
     //MARK: Fetchers
+    //for all cameras
+    func fetchCameras(_ context: NSManagedObjectContext) -> [CameraEntity] {
+        do { return try context.fetch(camerasFetch()) }
+        catch { fatalError("Unresolved error \(error)") }
+    }
     
-    func fetchCameras(forCompany company: CompanyEntity, _ context: NSManagedObjectContext) ->
+    //for the company view
+    func fetchCamerasByC(forCompany company: CompanyEntity, _ context: NSManagedObjectContext) ->
     [CameraEntity] {
         do {
             return try context.fetch(camerasByCompanyIdFetch(company: company))
@@ -37,6 +52,7 @@ final class DataHolder: ObservableObject {
         }
     }
     
+    //for the scan
     func fetchCameraById(id: String, _ context: NSManagedObjectContext) ->
     CameraEntity? {
         do {
@@ -57,6 +73,12 @@ final class DataHolder: ObservableObject {
     
     
     //MARK: Fetch Requests
+    func camerasFetch() -> NSFetchRequest<CameraEntity> {
+        let request = CameraEntity.fetchRequest()
+        request.sortDescriptors = [NSSortDescriptor(keyPath: \CameraEntity.name, ascending: true)]
+        return request
+    }
+    
     func camerasByCompanyIdFetch(company: CompanyEntity) -> NSFetchRequest<CameraEntity>{
         let request = CameraEntity.fetchRequest()
         request.predicate = NSPredicate(format: "company == %@", company)
