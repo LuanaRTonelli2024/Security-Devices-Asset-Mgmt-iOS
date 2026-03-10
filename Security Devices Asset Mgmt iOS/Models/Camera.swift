@@ -9,7 +9,7 @@ import Foundation
 
 struct Camera: Identifiable, Codable {
     let id: String?
-    let name: String?
+    let name: String
     let location: String?
     let ipAddress: String?
     let subnetMask: String?

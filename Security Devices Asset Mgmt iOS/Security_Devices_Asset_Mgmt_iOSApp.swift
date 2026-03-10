@@ -29,10 +29,12 @@ struct Security_Devices_Asset_Mgmt_iOSApp: App {
 
     var body: some Scene {
         WindowGroup {
+            let ctx = persistenceController.container.viewContext
             NavigationView{
                 AuthGate()
                     .environmentObject(authManager)
-                    .environment(\.managedObjectContext, persistenceController.container.viewContext)
+                    .environmentObject(DataHolder(ctx))
+                    .environment(\.managedObjectContext, ctx)
                 
             }
         }

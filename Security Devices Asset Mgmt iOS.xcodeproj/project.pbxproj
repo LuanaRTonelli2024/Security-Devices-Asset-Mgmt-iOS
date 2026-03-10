@@ -35,7 +35,11 @@
 		86DEB7A02F3521120024C9C1 /* FirebaseAuth in Frameworks */ = {isa = PBXBuildFile; productRef = 86DEB79F2F3521120024C9C1 /* FirebaseAuth */; };
 		86DEB7A22F3521170024C9C1 /* FirebaseCore in Frameworks */ = {isa = PBXBuildFile; productRef = 86DEB7A12F3521170024C9C1 /* FirebaseCore */; };
 		86DEB7A42F35213D0024C9C1 /* FirebaseFirestore in Frameworks */ = {isa = PBXBuildFile; productRef = 86DEB7A32F35213D0024C9C1 /* FirebaseFirestore */; };
+
+		CD0339EE2F5CAF6100B771EA /* DataHolder.swift in Sources */ = {isa = PBXBuildFile; fileRef = CD0339ED2F5CAF6100B771EA /* DataHolder.swift */; };
+
 		CD033A322F5FA85C00B771EA /* ImageReferenceView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CD033A312F5FA85C00B771EA /* ImageReferenceView.swift */; };
+
 		DE190D7E2F524C7000B0C1C6 /* CameraViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = DE190D7D2F524C7000B0C1C6 /* CameraViewModel.swift */; };
 		DE9EE3C02F529FFE00A992FE /* CompanyEditView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DE9EE3BF2F529FFE00A992FE /* CompanyEditView.swift */; };
 		DEA4F9562F4E2181005371C3 /* NetworkError.swift in Sources */ = {isa = PBXBuildFile; fileRef = DEA4F9552F4E2181005371C3 /* NetworkError.swift */; };
@@ -70,7 +74,11 @@
 		86C3A12B2F3671F40099A50C /* QRCodeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QRCodeView.swift; sourceTree = "<group>"; };
 		86C3A12C2F3671F40099A50C /* RegisterView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegisterView.swift; sourceTree = "<group>"; };
 		86DEB79B2F3520620024C9C1 /* GoogleService-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
+
+		CD0339ED2F5CAF6100B771EA /* DataHolder.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DataHolder.swift; sourceTree = "<group>"; };
+
 		CD033A312F5FA85C00B771EA /* ImageReferenceView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageReferenceView.swift; sourceTree = "<group>"; };
+
 		DE190D7D2F524C7000B0C1C6 /* CameraViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CameraViewModel.swift; sourceTree = "<group>"; };
 		DE9EE3BF2F529FFE00A992FE /* CompanyEditView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CompanyEditView.swift; sourceTree = "<group>"; };
 		DEA4F9552F4E2181005371C3 /* NetworkError.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkError.swift; sourceTree = "<group>"; };
@@ -80,6 +88,7 @@
 /* End PBXFileReference section */
 
 /* Begin PBXFileSystemSynchronizedRootGroup section */
+		CD0339F72F5CEAEF00B771EA /* Helpers */ = {isa = PBXFileSystemSynchronizedRootGroup; explicitFileTypes = {}; explicitFolders = (); path = Helpers; sourceTree = "<group>"; };
 		DEA4F9572F4E2233005371C3 /* Services */ = {isa = PBXFileSystemSynchronizedRootGroup; explicitFileTypes = {}; explicitFolders = (); path = Services; sourceTree = "<group>"; };
 /* End PBXFileSystemSynchronizedRootGroup section */
 
@@ -118,6 +127,7 @@
 		3D3D47992F3509E700E92517 /* Security Devices Asset Mgmt iOS */ = {
 			isa = PBXGroup;
 			children = (
+				CD0339F72F5CEAEF00B771EA /* Helpers */,
 				DEA4F9572F4E2233005371C3 /* Services */,
 				3D3D479A2F3509E700E92517 /* Security_Devices_Asset_Mgmt_iOSApp.swift */,
 				3D3D479C2F3509E700E92517 /* ContentView.swift */,
@@ -152,6 +162,7 @@
 				86C3A1162F3671E80099A50C /* Camera.swift */,
 				DEA4F9552F4E2181005371C3 /* NetworkError.swift */,
 				DEDC6BD32F5208EE0061B7BF /* Company.swift */,
+				CD0339ED2F5CAF6100B771EA /* DataHolder.swift */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -209,6 +220,7 @@
 			dependencies = (
 			);
 			fileSystemSynchronizedGroups = (
+				CD0339F72F5CEAEF00B771EA /* Helpers */,
 				DEA4F9572F4E2233005371C3 /* Services */,
 			);
 			name = "Security Devices Asset Mgmt iOS";
@@ -273,6 +285,7 @@
 			files = (
 				CD033A322F5FA85C00B771EA /* ImageReferenceView.swift in Sources */,
 				3D3D47A42F3509ED00E92517 /* Persistence.swift in Sources */,
+				CD0339EE2F5CAF6100B771EA /* DataHolder.swift in Sources */,
 				3D3D479D2F3509E700E92517 /* ContentView.swift in Sources */,
 				86C3A1132F3671D80099A50C /* AuthManager.swift in Sources */,
 				86C3A1142F3671D80099A50C /* AuthGate.swift in Sources */,
