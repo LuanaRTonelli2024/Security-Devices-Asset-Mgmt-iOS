@@ -26,6 +26,7 @@ struct ScanView: View {
                 if isShowingScanner {
                     CodeScannerView(
                         codeTypes: [.qr],
+                        simulatedData: "Loading Camera...",
                         completion: handleScan
                     )
                 }
@@ -61,7 +62,7 @@ struct ScanView: View {
         isShowingScanner = false
         switch result {
         case .success(let scanResult):
-            scannedCode = scanResult.string
+            scannedCode = scanResult.string // muda vs o video
         case .failure(let error):
             print("Scanning failed: \(error.localizedDescription)")
         }
