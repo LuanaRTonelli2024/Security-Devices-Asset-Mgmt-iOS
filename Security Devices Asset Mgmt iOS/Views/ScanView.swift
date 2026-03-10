@@ -51,7 +51,7 @@ struct ScanView: View {
             .navigationTitle("Scan QR")
             .navigationDestination(isPresented: $ShowCamera) {
                 if let camera = cameraFound {
-                    CameraDetailView(company: <#Company#>, cameras: <#CameraViewModel#>, camera: <#Camera#>)
+                    //CameraDetailView(company: <#Company#>, cameras: <#CameraViewModel#>, camera: <#Camera#>)
                 }
             }
         }
