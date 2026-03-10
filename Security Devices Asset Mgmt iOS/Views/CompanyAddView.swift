@@ -16,12 +16,16 @@ struct CompanyAddView: View {
     
     @ObservedObject var companies: CompanyViewModel
     @State private var newCompanyName: String = ""
+    @State private var newCompanyAddress: String = ""
+    @State private var newCompanyContact: String = ""
     
     
     var body: some View {
         Form {
             Section("Basic Info"){
                 TextField("Name: ", text: $newCompanyName)
+                TextField("Address: ", text: $newCompanyAddress)
+                TextField("Contact: ", text: $newCompanyContact)
             }
         }
         .navigationTitle("New Company")

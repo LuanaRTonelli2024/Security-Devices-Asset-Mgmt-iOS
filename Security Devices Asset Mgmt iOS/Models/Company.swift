@@ -9,11 +9,15 @@ import Foundation
 
 struct Company: Identifiable, Codable {
     var id: String?
-    var name: String?
+    var name: String
+    var address: String?
+    var contact: String?
     
     enum CodingKeys: String, CodingKey {
         case id = "_id"
         case name
+        case address
+        case contact
     }
 }
 

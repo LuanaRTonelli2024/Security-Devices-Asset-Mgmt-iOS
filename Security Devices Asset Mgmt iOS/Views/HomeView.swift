@@ -13,7 +13,7 @@ struct HomeView: View {
     @EnvironmentObject var authManager: AuthManager
     @StateObject var companies = CompanyViewModel()
     
-    enum Tab { case home, scan, companies, profile}
+    enum Tab { case home, scan, profile}
     
     @State private var selected: Tab = .home
     @State private var isSearching: Bool = false //for the search box
@@ -50,22 +50,13 @@ struct HomeView: View {
                             }
                         }
                         
-                        List{
-                            ForEach(companies.companyData){
-                                company in
-                                NavigationLink(destination: CameraView(company: company)) {
-                                    Label(company.name ?? "", systemImage: "building")
-                                        .font(.body)
-                                }
-                            }
-                        }
+                        CompanyView()
+                                    .environmentObject(authManager)
                     }
                     
                 case .scan:
                     CompanyView()
                     
-                case .companies:
-                    CompanyView()
                     
                 case .profile:
                     ProfileView()
@@ -80,24 +71,24 @@ struct HomeView: View {
                 HStackLayout(spacing: 20){
                     Spacer()
                     //Home
-                    TabButton(title: "Home", system: "house.fill", active: selected == .home) {
+                    TabButton(title: "Home", system: "building.2.fill", active: selected == .home) {
                         withAnimation(.easeInOut) {
                             selected = .home
                         }
                     }
                     
-                    TabButton(title: "Scan", system: "building.2.fill", active: selected == .scan) {
+                    TabButton(title: "Scan", system: "qrcode.viewfinder", active: selected == .scan) {
                         withAnimation(.easeInOut) {
                             selected = .scan
                         }
                     }
                     
                     //Companies
-                    TabButton(title: "Companies", system: "building.2.fill", active: selected == .companies) {
-                        withAnimation(.easeInOut) {
-                            selected = .companies
-                        }
-                    }
+//                    TabButton(title: "Companies", system: "building.2.fill", active: selected == .companies) {
+//                        withAnimation(.easeInOut) {
+//                            selected = .companies
+//                        }
+//                    }
                     
                     //Profile
                     TabButton(title: "Profile", system: "person.crop.circle", active: selected == .profile) {
