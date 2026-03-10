@@ -39,7 +39,7 @@
 		CD0339EE2F5CAF6100B771EA /* DataHolder.swift in Sources */ = {isa = PBXBuildFile; fileRef = CD0339ED2F5CAF6100B771EA /* DataHolder.swift */; };
 
 		CD033A322F5FA85C00B771EA /* ImageReferenceView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CD033A312F5FA85C00B771EA /* ImageReferenceView.swift */; };
-origin/main
+
 		DE190D7E2F524C7000B0C1C6 /* CameraViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = DE190D7D2F524C7000B0C1C6 /* CameraViewModel.swift */; };
 		DE9EE3C02F529FFE00A992FE /* CompanyEditView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DE9EE3BF2F529FFE00A992FE /* CompanyEditView.swift */; };
 		DEA4F9562F4E2181005371C3 /* NetworkError.swift in Sources */ = {isa = PBXBuildFile; fileRef = DEA4F9552F4E2181005371C3 /* NetworkError.swift */; };
@@ -78,7 +78,7 @@ origin/main
 		CD0339ED2F5CAF6100B771EA /* DataHolder.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DataHolder.swift; sourceTree = "<group>"; };
 
 		CD033A312F5FA85C00B771EA /* ImageReferenceView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageReferenceView.swift; sourceTree = "<group>"; };
- origin/main
+
 		DE190D7D2F524C7000B0C1C6 /* CameraViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CameraViewModel.swift; sourceTree = "<group>"; };
 		DE9EE3BF2F529FFE00A992FE /* CompanyEditView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CompanyEditView.swift; sourceTree = "<group>"; };
 		DEA4F9552F4E2181005371C3 /* NetworkError.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkError.swift; sourceTree = "<group>"; };
