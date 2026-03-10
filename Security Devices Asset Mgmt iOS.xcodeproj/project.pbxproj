@@ -38,6 +38,9 @@
 
 		CD0339EE2F5CAF6100B771EA /* DataHolder.swift in Sources */ = {isa = PBXBuildFile; fileRef = CD0339ED2F5CAF6100B771EA /* DataHolder.swift */; };
 
+		CD0339F92F5D082D00B771EA /* ScanView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CD0339F82F5D082D00B771EA /* ScanView.swift */; };
+
+
 		CD033A322F5FA85C00B771EA /* ImageReferenceView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CD033A312F5FA85C00B771EA /* ImageReferenceView.swift */; };
 
 		DE190D7E2F524C7000B0C1C6 /* CameraViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = DE190D7D2F524C7000B0C1C6 /* CameraViewModel.swift */; };
@@ -76,6 +79,9 @@
 		86DEB79B2F3520620024C9C1 /* GoogleService-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 
 		CD0339ED2F5CAF6100B771EA /* DataHolder.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DataHolder.swift; sourceTree = "<group>"; };
+
+		CD0339F82F5D082D00B771EA /* ScanView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ScanView.swift; sourceTree = "<group>"; };
+
 
 		CD033A312F5FA85C00B771EA /* ImageReferenceView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageReferenceView.swift; sourceTree = "<group>"; };
 
@@ -193,6 +199,7 @@
 				86C3A12A2F3671F40099A50C /* ProfileView.swift */,
 				86C3A12B2F3671F40099A50C /* QRCodeView.swift */,
 				86C3A12C2F3671F40099A50C /* RegisterView.swift */,
+				CD0339F82F5D082D00B771EA /* ScanView.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -290,6 +297,7 @@
 				86C3A1132F3671D80099A50C /* AuthManager.swift in Sources */,
 				86C3A1142F3671D80099A50C /* AuthGate.swift in Sources */,
 				86C3A12E2F3671F40099A50C /* CameraAddView.swift in Sources */,
+				CD0339F92F5D082D00B771EA /* ScanView.swift in Sources */,
 				86C3A12F2F3671F40099A50C /* CameraView.swift in Sources */,
 				86C3A1302F3671F40099A50C /* RegisterView.swift in Sources */,
 				86C3A1312F3671F40099A50C /* QRCodeView.swift in Sources */,
@@ -447,6 +455,7 @@
 				DEVELOPMENT_ASSET_PATHS = "\"Security Devices Asset Mgmt iOS/Preview Content\"";
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_KEY_NSCameraUsageDescription = "\"We need to access your camera to scan the QR codes";
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
@@ -475,6 +484,7 @@
 				DEVELOPMENT_ASSET_PATHS = "\"Security Devices Asset Mgmt iOS/Preview Content\"";
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_KEY_NSCameraUsageDescription = "\"We need to access your camera to scan the QR codes";
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
