@@ -31,15 +31,13 @@
 		86C3A1392F3671F40099A50C /* CompanyView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 86C3A1272F3671F40099A50C /* CompanyView.swift */; };
 		86C3A13A2F3671F40099A50C /* HomeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 86C3A1282F3671F40099A50C /* HomeView.swift */; };
 		86C3A13B2F3671F40099A50C /* CameraEditView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 86C3A1242F3671F40099A50C /* CameraEditView.swift */; };
-		86DEB79C2F3520620024C9C1 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 86DEB79B2F3520620024C9C1 /* GoogleService-Info.plist */; };
 		86DEB7A02F3521120024C9C1 /* FirebaseAuth in Frameworks */ = {isa = PBXBuildFile; productRef = 86DEB79F2F3521120024C9C1 /* FirebaseAuth */; };
 		86DEB7A22F3521170024C9C1 /* FirebaseCore in Frameworks */ = {isa = PBXBuildFile; productRef = 86DEB7A12F3521170024C9C1 /* FirebaseCore */; };
 		86DEB7A42F35213D0024C9C1 /* FirebaseFirestore in Frameworks */ = {isa = PBXBuildFile; productRef = 86DEB7A32F35213D0024C9C1 /* FirebaseFirestore */; };
-
 		CD0339EE2F5CAF6100B771EA /* DataHolder.swift in Sources */ = {isa = PBXBuildFile; fileRef = CD0339ED2F5CAF6100B771EA /* DataHolder.swift */; };
-
+		CD0339F92F5D082D00B771EA /* ScanView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CD0339F82F5D082D00B771EA /* ScanView.swift */; };
 		CD033A322F5FA85C00B771EA /* ImageReferenceView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CD033A312F5FA85C00B771EA /* ImageReferenceView.swift */; };
-
+		DE05304D2F609F5700AC8DBA /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = DE05304C2F609F5700AC8DBA /* GoogleService-Info.plist */; };
 		DE190D7E2F524C7000B0C1C6 /* CameraViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = DE190D7D2F524C7000B0C1C6 /* CameraViewModel.swift */; };
 		DE9EE3C02F529FFE00A992FE /* CompanyEditView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DE9EE3BF2F529FFE00A992FE /* CompanyEditView.swift */; };
 		DEA4F9562F4E2181005371C3 /* NetworkError.swift in Sources */ = {isa = PBXBuildFile; fileRef = DEA4F9552F4E2181005371C3 /* NetworkError.swift */; };
@@ -73,12 +71,10 @@
 		86C3A12A2F3671F40099A50C /* ProfileView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileView.swift; sourceTree = "<group>"; };
 		86C3A12B2F3671F40099A50C /* QRCodeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QRCodeView.swift; sourceTree = "<group>"; };
 		86C3A12C2F3671F40099A50C /* RegisterView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegisterView.swift; sourceTree = "<group>"; };
-		86DEB79B2F3520620024C9C1 /* GoogleService-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
-
 		CD0339ED2F5CAF6100B771EA /* DataHolder.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DataHolder.swift; sourceTree = "<group>"; };
-
+		CD0339F82F5D082D00B771EA /* ScanView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ScanView.swift; sourceTree = "<group>"; };
 		CD033A312F5FA85C00B771EA /* ImageReferenceView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageReferenceView.swift; sourceTree = "<group>"; };
-
+		DE05304C2F609F5700AC8DBA /* GoogleService-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		DE190D7D2F524C7000B0C1C6 /* CameraViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CameraViewModel.swift; sourceTree = "<group>"; };
 		DE9EE3BF2F529FFE00A992FE /* CompanyEditView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CompanyEditView.swift; sourceTree = "<group>"; };
 		DEA4F9552F4E2181005371C3 /* NetworkError.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkError.swift; sourceTree = "<group>"; };
@@ -135,7 +131,6 @@
 				3D3D47A32F3509ED00E92517 /* Persistence.swift */,
 				3D3D47A52F3509ED00E92517 /* Security_Devices_Asset_Mgmt_iOS.xcdatamodeld */,
 				3D3D47A02F3509ED00E92517 /* Preview Content */,
-				86DEB79B2F3520620024C9C1 /* GoogleService-Info.plist */,
 				86C3A1112F3671D80099A50C /* AuthGate.swift */,
 				86C3A1122F3671D80099A50C /* AuthManager.swift */,
 				86C3A1182F3671E80099A50C /* Models */,
@@ -143,6 +138,7 @@
 				86C3A11E2F3671F40099A50C /* Validators.swift */,
 				86C3A1212F3671F40099A50C /* ViewModel */,
 				86C3A12D2F3671F40099A50C /* Views */,
+				DE05304C2F609F5700AC8DBA /* GoogleService-Info.plist */,
 			);
 			path = "Security Devices Asset Mgmt iOS";
 			sourceTree = "<group>";
@@ -193,6 +189,7 @@
 				86C3A12A2F3671F40099A50C /* ProfileView.swift */,
 				86C3A12B2F3671F40099A50C /* QRCodeView.swift */,
 				86C3A12C2F3671F40099A50C /* RegisterView.swift */,
+				CD0339F82F5D082D00B771EA /* ScanView.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -272,7 +269,7 @@
 			files = (
 				3D3D47A22F3509ED00E92517 /* Preview Assets.xcassets in Resources */,
 				3D3D479F2F3509ED00E92517 /* Assets.xcassets in Resources */,
-				86DEB79C2F3520620024C9C1 /* GoogleService-Info.plist in Resources */,
+				DE05304D2F609F5700AC8DBA /* GoogleService-Info.plist in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -290,6 +287,7 @@
 				86C3A1132F3671D80099A50C /* AuthManager.swift in Sources */,
 				86C3A1142F3671D80099A50C /* AuthGate.swift in Sources */,
 				86C3A12E2F3671F40099A50C /* CameraAddView.swift in Sources */,
+				CD0339F92F5D082D00B771EA /* ScanView.swift in Sources */,
 				86C3A12F2F3671F40099A50C /* CameraView.swift in Sources */,
 				86C3A1302F3671F40099A50C /* RegisterView.swift in Sources */,
 				86C3A1312F3671F40099A50C /* QRCodeView.swift in Sources */,
@@ -447,6 +445,7 @@
 				DEVELOPMENT_ASSET_PATHS = "\"Security Devices Asset Mgmt iOS/Preview Content\"";
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_KEY_NSCameraUsageDescription = "\"We need to access your camera to scan the QR codes";
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
@@ -475,6 +474,7 @@
 				DEVELOPMENT_ASSET_PATHS = "\"Security Devices Asset Mgmt iOS/Preview Content\"";
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_KEY_NSCameraUsageDescription = "\"We need to access your camera to scan the QR codes";
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
