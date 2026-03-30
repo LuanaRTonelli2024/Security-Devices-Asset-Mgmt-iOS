@@ -37,6 +37,8 @@
 		CD0339EE2F5CAF6100B771EA /* DataHolder.swift in Sources */ = {isa = PBXBuildFile; fileRef = CD0339ED2F5CAF6100B771EA /* DataHolder.swift */; };
 		CD0339F92F5D082D00B771EA /* ScanView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CD0339F82F5D082D00B771EA /* ScanView.swift */; };
 		CD033A322F5FA85C00B771EA /* ImageReferenceView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CD033A312F5FA85C00B771EA /* ImageReferenceView.swift */; };
+		CDF261162F77288E001D9D8E /* LocationManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = CDF261152F77288E001D9D8E /* LocationManager.swift */; };
+		CDF261182F772F70001D9D8E /* CompanyMapView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CDF261172F772F70001D9D8E /* CompanyMapView.swift */; };
 		DE05304D2F609F5700AC8DBA /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = DE05304C2F609F5700AC8DBA /* GoogleService-Info.plist */; };
 		DE1072032F7A134500B5A177 /* APISync.swift in Sources */ = {isa = PBXBuildFile; fileRef = DE1072022F7A134500B5A177 /* APISync.swift */; };
 		DE190D7E2F524C7000B0C1C6 /* CameraViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = DE190D7D2F524C7000B0C1C6 /* CameraViewModel.swift */; };
@@ -75,6 +77,8 @@
 		CD0339ED2F5CAF6100B771EA /* DataHolder.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DataHolder.swift; sourceTree = "<group>"; };
 		CD0339F82F5D082D00B771EA /* ScanView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ScanView.swift; sourceTree = "<group>"; };
 		CD033A312F5FA85C00B771EA /* ImageReferenceView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageReferenceView.swift; sourceTree = "<group>"; };
+		CDF261152F77288E001D9D8E /* LocationManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocationManager.swift; sourceTree = "<group>"; };
+		CDF261172F772F70001D9D8E /* CompanyMapView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CompanyMapView.swift; sourceTree = "<group>"; };
 		DE05304C2F609F5700AC8DBA /* GoogleService-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		DE1072022F7A134500B5A177 /* APISync.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = APISync.swift; sourceTree = "<group>"; };
 		DE190D7D2F524C7000B0C1C6 /* CameraViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CameraViewModel.swift; sourceTree = "<group>"; };
@@ -171,6 +175,7 @@
 			children = (
 				DEA4F95A2F4E2345005371C3 /* CompanyViewModel.swift */,
 				DE190D7D2F524C7000B0C1C6 /* CameraViewModel.swift */,
+				CDF261152F77288E001D9D8E /* LocationManager.swift */,
 			);
 			path = ViewModel;
 			sourceTree = "<group>";
@@ -193,6 +198,7 @@
 				86C3A12B2F3671F40099A50C /* QRCodeView.swift */,
 				86C3A12C2F3671F40099A50C /* RegisterView.swift */,
 				CD0339F82F5D082D00B771EA /* ScanView.swift */,
+				CDF261172F772F70001D9D8E /* CompanyMapView.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -292,12 +298,14 @@
 				86C3A12E2F3671F40099A50C /* CameraAddView.swift in Sources */,
 				CD0339F92F5D082D00B771EA /* ScanView.swift in Sources */,
 				86C3A12F2F3671F40099A50C /* CameraView.swift in Sources */,
+				CDF261182F772F70001D9D8E /* CompanyMapView.swift in Sources */,
 				DE1072032F7A134500B5A177 /* APISync.swift in Sources */,
 				86C3A1302F3671F40099A50C /* RegisterView.swift in Sources */,
 				86C3A1312F3671F40099A50C /* QRCodeView.swift in Sources */,
 				86C3A1322F3671F40099A50C /* CompanyAddView.swift in Sources */,
 				86C3A1332F3671F40099A50C /* ProfileView.swift in Sources */,
 				86C3A1342F3671F40099A50C /* CameraDetailView.swift in Sources */,
+				CDF261162F77288E001D9D8E /* LocationManager.swift in Sources */,
 				86C3A1362F3671F40099A50C /* LoginView.swift in Sources */,
 				86C3A1372F3671F40099A50C /* Validators.swift in Sources */,
 				86C3A1392F3671F40099A50C /* CompanyView.swift in Sources */,
@@ -450,6 +458,7 @@
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_KEY_NSCameraUsageDescription = "\"We need to access your camera to scan the QR codes";
+				INFOPLIST_KEY_NSLocationWhenInUseUsageDescription = "\"We need your location to show directions to companies\"";
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
@@ -479,6 +488,7 @@
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_KEY_NSCameraUsageDescription = "\"We need to access your camera to scan the QR codes";
+				INFOPLIST_KEY_NSLocationWhenInUseUsageDescription = "\"We need your location to show directions to companies\"";
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
