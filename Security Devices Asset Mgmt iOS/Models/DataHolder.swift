@@ -14,14 +14,59 @@ final class DataHolder: ObservableObject {
     @Published var cameras: [CameraEntity] = []
     @Published var companies: [CompanyEntity] = []
     
+    @Published var isSyncing: Bool = false
+    
+    @AppStorage("token") private var token: String = ""
+    
+    private var isApplyingRemoteChanges = false
+    
+    private lazy var sync: APISync = {
+        APISync(baseURL: URL(string: APIConstants.baseURL)!)
+    }()
+    
     init(_ context: NSManagedObjectContext) {
         refreshAll(context)
+        syncAll(context)
     }
+    
+    func syncAll(_ context: NSManagedObjectContext) {
+        syncCompanies(context)
+        syncCameras(context)
+    }
+    
     
     func refreshAll(_ context: NSManagedObjectContext) {
         refreshCompanies(context)
         refreshCameras(context)
     }
+    
+    
+    func syncCompanies(_ context: NSManagedObjectContext) {
+        sync.fetchCompanies(context: context) { [weak self] applying in
+            DispatchQueue.main.async {
+                self?.isApplyingRemoteChanges = applying
+                self?.isSyncing = applying
+            }
+        } onRemoteApplied: { [weak self] in
+            DispatchQueue.main.async {
+                self?.refreshCompanies(context)
+            }
+        }
+    }
+    
+    func syncCameras(_ context: NSManagedObjectContext) {
+        sync.fetchCameras(context: context) { [weak self] applying in
+            DispatchQueue.main.async {
+                self?.isApplyingRemoteChanges = applying
+                self?.isSyncing = applying
+            }
+        } onRemoteApplied: { [weak self] in
+            DispatchQueue.main.async {
+                self?.refreshCameras(context)
+            }
+        }
+    }
+    
     
     func refreshCameras(_ context: NSManagedObjectContext) {
         cameras = fetchCameras(context)
@@ -33,7 +78,7 @@ final class DataHolder: ObservableObject {
     
     func refreshCompanies(_ context: NSManagedObjectContext){
         companies = fetchCompanies(context)
-    }
+        print("REFRESH COMPANIES COUNT:", companies.count)     }
     
     //MARK: Fetchers
     //for all cameras
@@ -116,7 +161,7 @@ final class DataHolder: ObservableObject {
         guard !n.isEmpty else { return }
         
         let cam = CameraEntity(context: context)
-        cam.id = UUID().uuidString
+        //cam.id = UUID().uuidString
         cam.name = n
         cam.location = location
         cam.ipAddress = ipAddress
@@ -199,12 +244,55 @@ final class DataHolder: ObservableObject {
     }
     
     
-    //MARK: save context
-    
     func saveContext(_ context: NSManagedObjectContext) {
+        
+        let inserted = context.insertedObjects
+        let updated  = context.updatedObjects
+        let deleted  = context.deletedObjects
+        
+        let insertedCameras   = inserted.compactMap { $0 as? CameraEntity }
+        let updatedCameras    = updated.compactMap  { $0 as? CameraEntity }
+        let deletedCameraIDs  = deleted.compactMap  { ($0 as? CameraEntity)?.id }
+        
+        let insertedCompanies  = inserted.compactMap { $0 as? CompanyEntity }
+        let updatedCompanies   = updated.compactMap  { $0 as? CompanyEntity }
+        let deletedCompanyIDs  = deleted.compactMap  { ($0 as? CompanyEntity)?.id }
+        
         do {
             try context.save()
             refreshAll(context) // always refresh
+            
+            guard !isApplyingRemoteChanges else {
+                print("Skipping push — applying remote changes")
+                return
+            }
+            
+            deletedCameraIDs.forEach  {
+                print("API DELETE camera:", $0)
+                sync.pushDeleteCamera(cameraID: $0)
+            }
+            insertedCameras.forEach {
+                print("API CREATE camera:", $0.name ?? "nil")
+                sync.pushCreateCamera(camera: $0)
+            }
+            updatedCameras.forEach {
+                print("API UPDATE camera:", $0.id ?? "nil")
+                sync.pushUpdateCamera(camera: $0)
+            }
+            
+            deletedCompanyIDs.forEach {
+                print("API DELETE company:", $0)
+                sync.pushDeleteCompany(companyID: $0)
+            }
+            insertedCompanies.forEach {
+                print("API CREATE company:", $0.name ?? "nil")
+                sync.pushCreateCompany(company: $0)
+            }
+            updatedCompanies.forEach {
+                print("API UPDATE company:", $0.id ?? "nil")
+                sync.pushUpdateCompany(company: $0)
+            }
+            
         } catch {
             let nsError = error as NSError
             fatalError("Unresolved error \(nsError), \(nsError.userInfo)")

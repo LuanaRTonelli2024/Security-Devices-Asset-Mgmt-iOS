@@ -9,13 +9,18 @@ import SwiftUI
 
 struct CameraRowView: View {
     
-    let camera: Camera
-    @ObservedObject var cameras: CameraViewModel
-    let company: Company
+//    let camera: Camera
+    let camera: CameraEntity
+    
+//    @ObservedObject var cameras: CameraViewModel
+    
+//    let company: Company
+    let company: CompanyEntity
 
     var body: some View {
         NavigationLink(
-            destination: CameraDetailView(company: company, cameras: cameras, camera: camera)
+            //destination: CameraDetailView(company: company, cameras: cameras, camera: camera)
+            destination: CameraDetailView(company: company, camera: camera)
         ) {
             HStack(alignment: .center, spacing: 12) {
                 Image(systemName: "web.camera")

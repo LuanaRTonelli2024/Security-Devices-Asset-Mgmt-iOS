@@ -6,12 +6,17 @@
 //
 
 import SwiftUI
+import CoreData
 
 
 struct CompanyView: View {
     
     @EnvironmentObject var authManager: AuthManager
-    @StateObject var companies = CompanyViewModel()
+    //@StateObject var companies = CompanyViewModel()
+    
+    @Environment(\.managedObjectContext) private var viewContext
+    @EnvironmentObject var dataHolder: DataHolder
+    
     
     //Toolbar
     @State private var showNewCompany = false
@@ -19,29 +24,32 @@ struct CompanyView: View {
     var body: some View {
         VStack (spacing: 20){
             List {
-                ForEach(companies.companyData) { company in
+                ForEach(dataHolder.companies) { company in
                     NavigationLink {
-                        CompanyEditView(company: company) { newName, newAddress, newContact in
-                            Task {
-                                await companies.updateCompany(
-                                    token: authManager.token,
-                                    id: company.id ?? "",
-                                    newName: newName,
-                                    newAddress: newAddress,
-                                    newContact: newContact
-                                    
-                                )
-                            }
-                        }
-                        .environmentObject(authManager)
+//                        CompanyEditView(company: company) { newName, newAddress, newContact in
+//                            Task {
+//                                await companies.updateCompany(
+//                                    token: authManager.token,
+//                                    id: company.id ?? "",
+//                                    newName: newName,
+//                                    newAddress: newAddress,
+//                                    newContact: newContact
+//                                    
+//                                )
+//                            }
+//                        }
+                        CompanyEditView(company: company)
+                            .environmentObject(authManager)
+                            .environmentObject(dataHolder)
                     } label: {
                         Label(company.name ?? "", systemImage: "building")
                     }
                     .swipeActions {
                         Button(role: .destructive) {
-                            Task {
-                                await companies.deleteCompany(token: authManager.token, id: company.id)
-                            }
+//                            Task {
+//                                await companies.deleteCompany(token: authManager.token, id: company.id)
+//                            }
+                            dataHolder.deleteCompany(company, viewContext)
                         } label: {
                             Label("Delete", systemImage: "trash")
                         }
@@ -49,13 +57,16 @@ struct CompanyView: View {
                 }
             }
         }
-        .onAppear {
-            Task {
-                await companies.fetchCompanies(token: authManager.token)
-            }
-        }
+//        .onAppear {
+//            Task {
+//                await companies.fetchCompanies(token: authManager.token)
+//            }
+//        }
         //        .navigationTitle("Companies")
         //        Spacer()
+        .onAppear{
+            dataHolder.syncAll(viewContext)
+        }
         .toolbar {
             ToolbarItem(placement: .confirmationAction) {
                 HStack{
@@ -69,7 +80,10 @@ struct CompanyView: View {
         }
         .sheet(isPresented: $showNewCompany){
             NavigationStack {
-                CompanyAddView(companies: companies).environmentObject(authManager)
+//                CompanyAddView(companies: companies)
+                CompanyAddView()
+                    .environmentObject(authManager)
+                    .environmentObject(dataHolder)
             }
         }
     }

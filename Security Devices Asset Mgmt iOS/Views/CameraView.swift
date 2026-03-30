@@ -10,15 +10,21 @@ import CodeScanner
 
 struct CameraView: View {
     
-    @EnvironmentObject var authManager: AuthManager
-    @StateObject var cameras = CameraViewModel()
+    @Environment(\.managedObjectContext) private var viewContext
+    @EnvironmentObject var dataHolder: DataHolder
     
-    let company: Company //companyID
+    @EnvironmentObject var authManager: AuthManager
+    
+//    @StateObject var cameras = CameraViewModel()
+    
+//    let company: Company //companyID
+    
+    let company: CompanyEntity
     
     //Toolbar
     @State private var showNewCamera = false
-    @State private var isShowingScanner = false
-    @State private var showEditCamera = false
+//    @State private var isShowingScanner = false
+//    @State private var showEditCamera = false
     //@State private var selectedCamera: Camera?
     
     //Scan QR code
@@ -30,18 +36,20 @@ struct CameraView: View {
     var body: some View {
         VStack{
             List {
-                ForEach(cameras.cameraData) { camera in
-                    CameraRowView(camera: camera, cameras: cameras, company: company)
+//                ForEach(cameras.cameraData) { camera in
+//                      CameraRowView(camera: camera, cameras: cameras, company: company)
+                ForEach(dataHolder.cameras.filter { $0.companyId == company.id }) { camera in
+                    CameraRowView(camera: camera, company: company)
                 }
                 .onDelete(perform: deleteCamera)
             }
         }
         .padding(10)
-        .onAppear {
-            Task {
-                await cameras.fetchCamerasByCompany(token: authManager.token, companyId: company.id ?? "")
-            }
-        }
+//        .onAppear {
+//            Task {
+//                await cameras.fetchCamerasByCompany(token: authManager.token, companyId: company.id ?? "")
+//            }
+//        }
         .navigationTitle("Cameras")
         .toolbar {
             ToolbarItem(placement: .topBarTrailing) {
@@ -54,7 +62,8 @@ struct CameraView: View {
         }
         .sheet(isPresented: $showNewCamera) {
             NavigationStack {
-                CameraAddView(cameras: cameras, company: company)
+//                CameraAddView(cameras: cameras, company: company)
+                CameraAddView(company: company)
                     .environmentObject(authManager)
             }
         }
@@ -62,11 +71,16 @@ struct CameraView: View {
     
     
     private func deleteCamera(at offsets: IndexSet) {
-        Task {
-            for index in offsets {
-                let cam = cameras.cameraData[index]
-                await cameras.deleteCamera(id: cam.id, token: authManager.token)
-            }
+//        Task {
+//            for index in offsets {
+//                let cam = cameras.cameraData[index]
+//                await cameras.deleteCamera(id: cam.id, token: authManager.token)
+//            }
+//        }
+        let filtered = dataHolder.cameras.filter { $0.companyId == company.id }
+        for index in offsets {
+            let cam = filtered[index]
+            dataHolder.deleteCamera(cam, viewContext)
         }
     }
 }
