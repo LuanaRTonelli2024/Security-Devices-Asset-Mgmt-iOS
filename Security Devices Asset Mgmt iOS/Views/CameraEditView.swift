@@ -9,11 +9,16 @@ import SwiftUI
 
 struct CameraEditView: View {
     
+    @Environment(\.managedObjectContext) private var viewContext
+    @EnvironmentObject var dataHolder: DataHolder
+    
     @EnvironmentObject var authManager: AuthManager
     
     @Environment(\.dismiss) var dismiss
     
-    var camera: Camera
+//    var camera: Camera
+    
+    var camera: CameraEntity
     
     @State var name: String
     @State var location: String
@@ -23,10 +28,12 @@ struct CameraEditView: View {
     @State var userName: String
     @State var password: String
     
-    var onUpdate: (String, String, String, String, String, String, String) -> Void
+ //   var onUpdate: (String, String, String, String, String, String, String) -> Void
     
-    init(camera: Camera,
-         onUpdate: @escaping (String, String, String, String, String, String, String) -> Void) {
+ //   init(camera: Camera,
+ //        onUpdate: @escaping (String, String, String, String, String, String, String) -> Void) {
+    
+    init(camera: CameraEntity) {
         
         self.camera = camera
         
@@ -38,7 +45,7 @@ struct CameraEditView: View {
         _userName = State(initialValue: camera.userName ?? "")
         _password = State(initialValue: camera.password ?? "")
         
-        self.onUpdate = onUpdate
+//        self.onUpdate = onUpdate
     }
     
     var body: some View {
@@ -57,13 +64,25 @@ struct CameraEditView: View {
         .toolbar{
             ToolbarItem(placement: .topBarTrailing) {
                 Button("Save") {
-                    onUpdate(name,
-                             location,
-                             ipAddress,
-                             subnetMask,
-                             defaultGateway,
-                             userName,
-                             password)
+//                    onUpdate(name,
+//                             location,
+//                             ipAddress,
+//                             subnetMask,
+//                             defaultGateway,
+//                             userName,
+//                             password)
+                    dataHolder.updateCamera(
+                        camera: camera,
+                        name: name,
+                        location: location.isEmpty ? nil : location,
+                        ipAddress: ipAddress.isEmpty ? nil : ipAddress,
+                        subnetMask: subnetMask.isEmpty ? nil : subnetMask,
+                        defaultGateway: defaultGateway.isEmpty ? nil : defaultGateway,
+                        userName: userName.isEmpty ? nil : userName,
+                        password: password.isEmpty ? nil : password,
+                        companyId: camera.companyId,
+                        viewContext
+                    )
                     dismiss()
                 }
                 .disabled(name.isEmpty || location.isEmpty)

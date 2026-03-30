@@ -10,12 +10,17 @@ import SwiftUI
 
 struct CameraAddView: View {
     
+    @Environment(\.managedObjectContext) private var viewContext
+    @EnvironmentObject var dataHolder: DataHolder
+    
     @EnvironmentObject var authManager: AuthManager
     @Environment(\.dismiss) var dismiss
     
-    @ObservedObject var cameras: CameraViewModel
+//    @ObservedObject var cameras: CameraViewModel
     
-    let company: Company
+//    let company: Company
+    
+    let company: CompanyEntity
     
     
     //Info Camera
@@ -75,20 +80,32 @@ struct CameraAddView: View {
         .toolbar {
             ToolbarItem(placement: .confirmationAction) {
                 Button("Save"){
-                    Task {
-                        await cameras.createCamera(
-                            token: authManager.token,
-                            name: newCameraName,
-                            location: newCameraLocation,
-                            ipAddress: newCameraIPAddress,
-                            subnetMask: newCameraSubnetMask,
-                            defaultGateway: newCameraDefaultGateway,
-                            userName: newCameraUserName,
-                            password: newCameraPassword,
-                            for: company
-                        )
-                        dismiss()
-                    }
+                    //                    Task {
+                    //                        await cameras.createCamera(
+                    //                            token: authManager.token,
+                    //                            name: newCameraName,
+                    //                            location: newCameraLocation,
+                    //                            ipAddress: newCameraIPAddress,
+                    //                            subnetMask: newCameraSubnetMask,
+                    //                            defaultGateway: newCameraDefaultGateway,
+                    //                            userName: newCameraUserName,
+                    //                            password: newCameraPassword,
+                    //                            for: company
+                    //                        )
+                    //                        dismiss()
+                    //                    }
+                    dataHolder.createCamera(
+                        name: newCameraName,
+                        location: newCameraLocation.isEmpty ? nil : newCameraLocation,
+                        ipAddress: newCameraIPAddress.isEmpty ? nil : newCameraIPAddress,
+                        subnetMask: newCameraSubnetMask.isEmpty ? nil : newCameraSubnetMask,
+                        defaultGateway: newCameraDefaultGateway.isEmpty ? nil : newCameraDefaultGateway,
+                        userName: newCameraUserName.isEmpty ? nil : newCameraUserName,
+                        password: newCameraPassword.isEmpty ? nil : newCameraPassword,
+                        companyId: company.id,
+                        viewContext
+                    )
+                    dismiss()
                 }
                 .disabled(newCameraName.isEmpty || newCameraLocation.isEmpty)
             }

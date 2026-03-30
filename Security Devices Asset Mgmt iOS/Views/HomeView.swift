@@ -9,9 +9,11 @@ import SwiftUI
 
 struct HomeView: View {
     
+    @EnvironmentObject var dataHolder: DataHolder
     
     @EnvironmentObject var authManager: AuthManager
-    @StateObject var companies = CompanyViewModel()
+    
+//    @StateObject var companies = CompanyViewModel()
     
     enum Tab { case home, scan, profile}
     
@@ -42,16 +44,17 @@ struct HomeView: View {
                         .onAppear {
                             authManager.fetchCurrentAppUser { _ in }
                             
-                            let token = authManager.token
-                            if !token.isEmpty {
-                                Task {
-                                    await companies.fetchCompanies(token: authManager.token)
-                                }
-                            }
+//                            let token = authManager.token
+//                            if !token.isEmpty {
+//                                Task {
+//                                    await companies.fetchCompanies(token: authManager.token)
+//                                }
+//                            }
                         }
                         
                         CompanyView()
-                                    .environmentObject(authManager)
+                            .environmentObject(authManager)
+                            .environmentObject(dataHolder)
                     }
                     
                 case .scan:

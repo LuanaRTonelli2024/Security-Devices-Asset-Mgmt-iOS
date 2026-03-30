@@ -9,7 +9,7 @@
 	<key>PLIST_VERSION</key>
 	<string>1</string>
 	<key>BUNDLE_ID</key>
-	<string>LuanaRTonelli.Security-Devices-Asset-Mgmt-iOS</string>
+	<string>com.LuanaRTonelli.Security-Devices-Asset-Mgmt-iOS</string>
 	<key>PROJECT_ID</key>
 	<string>security-devices-asset-mgmt</string>
 	<key>STORAGE_BUCKET</key>
@@ -25,6 +25,6 @@
 	<key>IS_SIGNIN_ENABLED</key>
 	<true></true>
 	<key>GOOGLE_APP_ID</key>
-	<string>1:49344152359:ios:d9b6a179075957fe821f02</string>
+	<string>1:49344152359:ios:418d8e3de8f2ea29821f02</string>
 </dict>
 </plist>

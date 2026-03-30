@@ -6,18 +6,25 @@
 //
 
 import SwiftUI
+import CoreData
 
 struct CameraDetailView: View {
     
+    @Environment(\.managedObjectContext) private var viewContext
+    @EnvironmentObject var dataHolder: DataHolder
+    
     @EnvironmentObject var authManager: AuthManager
 
-    let company: Company
+//    let company: Company
+    let company: CompanyEntity
+    let camera: CameraEntity
     
-    @ObservedObject var cameras: CameraViewModel
+//    @ObservedObject var cameras: CameraViewModel
     
-    let camera: Camera
+//    let camera: Camera
     //@State var camera: Camera
     //@Binding var camera: Camera
+    
     @State private var selectedTab = "Info" //picker
     @State private var showEdit = false //toolbar
     
@@ -84,22 +91,24 @@ struct CameraDetailView: View {
         }
         .sheet(isPresented: $showEdit){
             NavigationStack {
-                CameraEditView(camera: camera) { newName, newLocation, newIp, newSubnet, newGateway, newUser, newPass in
-                    Task {
-                        await cameras.updateCamera(
-                            token: authManager.token,
-                            id: camera.id ?? "",
-                            newName: newName,
-                            newLocation: newLocation,
-                            newIpAddress: newIp,
-                            newSubnetMask: newSubnet,
-                            newDefaultGateway: newGateway,
-                            newUserName: newUser,
-                            newPassword: newPass,
-                            for: company
-                        )
-                    }
-                }
+                //                CameraEditView(camera: camera) { newName, newLocation, newIp, newSubnet, newGateway, newUser, newPass in
+                //                    Task {
+                //                        await cameras.updateCamera(
+                //                            token: authManager.token,
+                //                            id: camera.id ?? "",
+                //                            newName: newName,
+                //                            newLocation: newLocation,
+                //                            newIpAddress: newIp,
+                //                            newSubnetMask: newSubnet,
+                //                            newDefaultGateway: newGateway,
+                //                            newUserName: newUser,
+                //                            newPassword: newPass,
+                //                            for: company
+                //                        )
+                //                    }
+                //                }
+                CameraEditView(camera: camera)
+                    .environmentObject(authManager)
             }
         }
     }
