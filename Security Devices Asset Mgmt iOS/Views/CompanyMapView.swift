@@ -120,6 +120,7 @@ struct CompanyMapView: View {
                 }
             }
             .padding()
+            .padding(.bottom, 60)
             .background(.thinMaterial)
         }
         .navigationTitle(CompanyMVM.company.name ?? "")

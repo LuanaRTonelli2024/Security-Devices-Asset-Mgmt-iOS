@@ -457,6 +457,7 @@
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_ASSET_PATHS = "\"Security Devices Asset Mgmt iOS/Preview Content\"";
+				DEVELOPMENT_TEAM = 242M7KWL4Y;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_KEY_NSCameraUsageDescription = "\"We need to access your camera to scan the QR codes and take referece photos.\"";
@@ -488,6 +489,7 @@
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_ASSET_PATHS = "\"Security Devices Asset Mgmt iOS/Preview Content\"";
+				DEVELOPMENT_TEAM = 242M7KWL4Y;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_KEY_NSCameraUsageDescription = "\"We need to access your camera to scan the QR codes and take referece photos.\"";
