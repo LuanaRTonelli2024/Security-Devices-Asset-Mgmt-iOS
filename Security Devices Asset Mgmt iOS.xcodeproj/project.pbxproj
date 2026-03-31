@@ -39,6 +39,7 @@
 		CD033A322F5FA85C00B771EA /* ImageReferenceView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CD033A312F5FA85C00B771EA /* ImageReferenceView.swift */; };
 		CDF261162F77288E001D9D8E /* LocationManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = CDF261152F77288E001D9D8E /* LocationManager.swift */; };
 		CDF261182F772F70001D9D8E /* CompanyMapView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CDF261172F772F70001D9D8E /* CompanyMapView.swift */; };
+		CDF261322F7B4FEB001D9D8E /* CompanyMapViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = CDF261312F7B4FEB001D9D8E /* CompanyMapViewModel.swift */; };
 		DE05304D2F609F5700AC8DBA /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = DE05304C2F609F5700AC8DBA /* GoogleService-Info.plist */; };
 		DE1072032F7A134500B5A177 /* APISync.swift in Sources */ = {isa = PBXBuildFile; fileRef = DE1072022F7A134500B5A177 /* APISync.swift */; };
 		DE190D7E2F524C7000B0C1C6 /* CameraViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = DE190D7D2F524C7000B0C1C6 /* CameraViewModel.swift */; };
@@ -79,6 +80,7 @@
 		CD033A312F5FA85C00B771EA /* ImageReferenceView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageReferenceView.swift; sourceTree = "<group>"; };
 		CDF261152F77288E001D9D8E /* LocationManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocationManager.swift; sourceTree = "<group>"; };
 		CDF261172F772F70001D9D8E /* CompanyMapView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CompanyMapView.swift; sourceTree = "<group>"; };
+		CDF261312F7B4FEB001D9D8E /* CompanyMapViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CompanyMapViewModel.swift; sourceTree = "<group>"; };
 		DE05304C2F609F5700AC8DBA /* GoogleService-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		DE1072022F7A134500B5A177 /* APISync.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = APISync.swift; sourceTree = "<group>"; };
 		DE190D7D2F524C7000B0C1C6 /* CameraViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CameraViewModel.swift; sourceTree = "<group>"; };
@@ -176,6 +178,7 @@
 				DEA4F95A2F4E2345005371C3 /* CompanyViewModel.swift */,
 				DE190D7D2F524C7000B0C1C6 /* CameraViewModel.swift */,
 				CDF261152F77288E001D9D8E /* LocationManager.swift */,
+				CDF261312F7B4FEB001D9D8E /* CompanyMapViewModel.swift */,
 			);
 			path = ViewModel;
 			sourceTree = "<group>";
@@ -310,6 +313,7 @@
 				86C3A1372F3671F40099A50C /* Validators.swift in Sources */,
 				86C3A1392F3671F40099A50C /* CompanyView.swift in Sources */,
 				DEDC6BD42F5208EE0061B7BF /* Company.swift in Sources */,
+				CDF261322F7B4FEB001D9D8E /* CompanyMapViewModel.swift in Sources */,
 				86C3A13A2F3671F40099A50C /* HomeView.swift in Sources */,
 				DE9EE3C02F529FFE00A992FE /* CompanyEditView.swift in Sources */,
 				DEA4F95B2F4E2345005371C3 /* CompanyViewModel.swift in Sources */,
