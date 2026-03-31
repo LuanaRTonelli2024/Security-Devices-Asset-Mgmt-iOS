@@ -9,6 +9,8 @@ import SwiftUI
 
 struct RegisterView: View {
     
+    @Environment(\.dismiss) var dismiss
+    
     @State private var email = ""
     @State private var password = ""
     @State private var displayName = ""
@@ -63,7 +65,7 @@ struct RegisterView: View {
             }){
                 RoundedRectangle(cornerRadius: 10)
                     .fill(email.isEmpty || password.isEmpty || displayName.isEmpty ? .gray : .blue)
-                    //.fill(.blue)
+                //.fill(.blue)
                     .frame(height: 50)
                     .overlay(
                         Text("Register")
@@ -85,8 +87,9 @@ struct RegisterView: View {
                 VStack(spacing: 30) {
                     Text("✅ User created successfully.")
                         .foregroundColor(.green)
-                    NavigationLink("Click here to Login", destination: LoginView())
-                        .font(.headline)
+                        .onAppear {
+                            dismiss()
+                        }
                 }
             }
             

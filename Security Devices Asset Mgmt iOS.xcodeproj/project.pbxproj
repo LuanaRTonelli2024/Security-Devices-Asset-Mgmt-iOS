@@ -39,6 +39,12 @@
 		CDF261322F7B4FEB001D9D8E /* CompanyMapViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = CDF261312F7B4FEB001D9D8E /* CompanyMapViewModel.swift */; };
 		DE05304D2F609F5700AC8DBA /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = DE05304C2F609F5700AC8DBA /* GoogleService-Info.plist */; };
 		DE1072032F7A134500B5A177 /* APISync.swift in Sources */ = {isa = PBXBuildFile; fileRef = DE1072022F7A134500B5A177 /* APISync.swift */; };
+		DE1CB06D2F7B88F3003E974C /* FirebaseStorage in Frameworks */ = {isa = PBXBuildFile; productRef = DE1CB06C2F7B88F3003E974C /* FirebaseStorage */; };
+		DE7F6C482F7B8C9C00D60376 /* CameraCreateRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = DE7F6C472F7B8C9C00D60376 /* CameraCreateRequest.swift */; };
+		DE7F6C4A2F7B8CA900D60376 /* CameraUpdateRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = DE7F6C492F7B8CA900D60376 /* CameraUpdateRequest.swift */; };
+		DE7F6C4C2F7B8CB500D60376 /* CompanyCreateRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = DE7F6C4B2F7B8CB500D60376 /* CompanyCreateRequest.swift */; };
+		DE7F6C4E2F7B8CC000D60376 /* CompanyUpdateRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = DE7F6C4D2F7B8CC000D60376 /* CompanyUpdateRequest.swift */; };
+		DE7F6C502F7B8F0E00D60376 /* ImagePickerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DE7F6C4F2F7B8F0E00D60376 /* ImagePickerView.swift */; };
 		DE9EE3C02F529FFE00A992FE /* CompanyEditView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DE9EE3BF2F529FFE00A992FE /* CompanyEditView.swift */; };
 		DEC8D7292F58F7F40059A6AB /* CameraRowView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DEC8D7282F58F7F40059A6AB /* CameraRowView.swift */; };
 		DEDC6BD42F5208EE0061B7BF /* Company.swift in Sources */ = {isa = PBXBuildFile; fileRef = DEDC6BD32F5208EE0061B7BF /* Company.swift */; };
@@ -74,6 +80,11 @@
 		CDF261312F7B4FEB001D9D8E /* CompanyMapViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CompanyMapViewModel.swift; sourceTree = "<group>"; };
 		DE05304C2F609F5700AC8DBA /* GoogleService-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		DE1072022F7A134500B5A177 /* APISync.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = APISync.swift; sourceTree = "<group>"; };
+		DE7F6C472F7B8C9C00D60376 /* CameraCreateRequest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CameraCreateRequest.swift; sourceTree = "<group>"; };
+		DE7F6C492F7B8CA900D60376 /* CameraUpdateRequest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CameraUpdateRequest.swift; sourceTree = "<group>"; };
+		DE7F6C4B2F7B8CB500D60376 /* CompanyCreateRequest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CompanyCreateRequest.swift; sourceTree = "<group>"; };
+		DE7F6C4D2F7B8CC000D60376 /* CompanyUpdateRequest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CompanyUpdateRequest.swift; sourceTree = "<group>"; };
+		DE7F6C4F2F7B8F0E00D60376 /* ImagePickerView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImagePickerView.swift; sourceTree = "<group>"; };
 		DE9EE3BF2F529FFE00A992FE /* CompanyEditView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CompanyEditView.swift; sourceTree = "<group>"; };
 		DEC8D7282F58F7F40059A6AB /* CameraRowView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CameraRowView.swift; sourceTree = "<group>"; };
 		DEDC6BD32F5208EE0061B7BF /* Company.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Company.swift; sourceTree = "<group>"; };
@@ -92,6 +103,7 @@
 				86C3A10E2F36551B0099A50C /* CodeScanner in Frameworks */,
 				86DEB7A22F3521170024C9C1 /* FirebaseCore in Frameworks */,
 				86DEB7A02F3521120024C9C1 /* FirebaseAuth in Frameworks */,
+				DE1CB06D2F7B88F3003E974C /* FirebaseStorage in Frameworks */,
 				86DEB7A42F35213D0024C9C1 /* FirebaseFirestore in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -148,6 +160,10 @@
 		86C3A1182F3671E80099A50C /* Models */ = {
 			isa = PBXGroup;
 			children = (
+				DE7F6C4D2F7B8CC000D60376 /* CompanyUpdateRequest.swift */,
+				DE7F6C4B2F7B8CB500D60376 /* CompanyCreateRequest.swift */,
+				DE7F6C492F7B8CA900D60376 /* CameraUpdateRequest.swift */,
+				DE7F6C472F7B8C9C00D60376 /* CameraCreateRequest.swift */,
 				DE1072022F7A134500B5A177 /* APISync.swift */,
 				86C3A1152F3671E80099A50C /* AppUser.swift */,
 				86C3A1162F3671E80099A50C /* Camera.swift */,
@@ -169,6 +185,7 @@
 		86C3A12D2F3671F40099A50C /* Views */ = {
 			isa = PBXGroup;
 			children = (
+				DE7F6C4F2F7B8F0E00D60376 /* ImagePickerView.swift */,
 				86C3A1222F3671F40099A50C /* CameraAddView.swift */,
 				86C3A1232F3671F40099A50C /* CameraDetailView.swift */,
 				86C3A1242F3671F40099A50C /* CameraEditView.swift */,
@@ -278,6 +295,7 @@
 				3D3D47A42F3509ED00E92517 /* Persistence.swift in Sources */,
 				CD0339EE2F5CAF6100B771EA /* DataHolder.swift in Sources */,
 				3D3D479D2F3509E700E92517 /* ContentView.swift in Sources */,
+				DE7F6C502F7B8F0E00D60376 /* ImagePickerView.swift in Sources */,
 				86C3A1132F3671D80099A50C /* AuthManager.swift in Sources */,
 				86C3A1142F3671D80099A50C /* AuthGate.swift in Sources */,
 				86C3A12E2F3671F40099A50C /* CameraAddView.swift in Sources */,
@@ -286,6 +304,7 @@
 				CDF261182F772F70001D9D8E /* CompanyMapView.swift in Sources */,
 				DE1072032F7A134500B5A177 /* APISync.swift in Sources */,
 				86C3A1302F3671F40099A50C /* RegisterView.swift in Sources */,
+				DE7F6C4E2F7B8CC000D60376 /* CompanyUpdateRequest.swift in Sources */,
 				86C3A1312F3671F40099A50C /* QRCodeView.swift in Sources */,
 				86C3A1322F3671F40099A50C /* CompanyAddView.swift in Sources */,
 				86C3A1332F3671F40099A50C /* ProfileView.swift in Sources */,
@@ -297,11 +316,14 @@
 				86C3A13A2F3671F40099A50C /* HomeView.swift in Sources */,
 				DE9EE3C02F529FFE00A992FE /* CompanyEditView.swift in Sources */,
 				DEC8D7292F58F7F40059A6AB /* CameraRowView.swift in Sources */,
+				DE7F6C482F7B8C9C00D60376 /* CameraCreateRequest.swift in Sources */,
 				86C3A13B2F3671F40099A50C /* CameraEditView.swift in Sources */,
 				3D3D479B2F3509E700E92517 /* Security_Devices_Asset_Mgmt_iOSApp.swift in Sources */,
+				DE7F6C4A2F7B8CA900D60376 /* CameraUpdateRequest.swift in Sources */,
 				86C3A11C2F3671E80099A50C /* Camera.swift in Sources */,
 				86C3A11D2F3671E80099A50C /* AppUser.swift in Sources */,
 				3D3D47A72F3509ED00E92517 /* Security_Devices_Asset_Mgmt_iOS.xcdatamodeld in Sources */,
+				DE7F6C4C2F7B8CB500D60376 /* CompanyCreateRequest.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -437,8 +459,9 @@
 				DEVELOPMENT_ASSET_PATHS = "\"Security Devices Asset Mgmt iOS/Preview Content\"";
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
-				INFOPLIST_KEY_NSCameraUsageDescription = "\"We need to access your camera to scan the QR codes";
+				INFOPLIST_KEY_NSCameraUsageDescription = "\"We need to access your camera to scan the QR codes and take referece photos.\"";
 				INFOPLIST_KEY_NSLocationWhenInUseUsageDescription = "\"We need your location to show directions to companies\"";
+				INFOPLIST_KEY_NSPhotoLibraryUsageDescription = "\"This app needs access to your photo library to upload reference images.\"";
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
@@ -467,8 +490,9 @@
 				DEVELOPMENT_ASSET_PATHS = "\"Security Devices Asset Mgmt iOS/Preview Content\"";
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
-				INFOPLIST_KEY_NSCameraUsageDescription = "\"We need to access your camera to scan the QR codes";
+				INFOPLIST_KEY_NSCameraUsageDescription = "\"We need to access your camera to scan the QR codes and take referece photos.\"";
 				INFOPLIST_KEY_NSLocationWhenInUseUsageDescription = "\"We need your location to show directions to companies\"";
+				INFOPLIST_KEY_NSPhotoLibraryUsageDescription = "\"This app needs access to your photo library to upload reference images.\"";
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
@@ -549,6 +573,11 @@
 			isa = XCSwiftPackageProductDependency;
 			package = 86DEB79D2F3520D00024C9C1 /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */;
 			productName = FirebaseFirestore;
+		};
+		DE1CB06C2F7B88F3003E974C /* FirebaseStorage */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 86DEB79D2F3520D00024C9C1 /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */;
+			productName = FirebaseStorage;
 		};
 /* End XCSwiftPackageProductDependency section */
 

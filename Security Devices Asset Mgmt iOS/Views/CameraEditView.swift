@@ -6,6 +6,7 @@
 //
 
 import SwiftUI
+import PhotosUI
 
 struct CameraEditView: View {
     
@@ -16,7 +17,7 @@ struct CameraEditView: View {
     
     @Environment(\.dismiss) var dismiss
     
-//    var camera: Camera
+    //    var camera: Camera
     
     var camera: CameraEntity
     
@@ -28,10 +29,14 @@ struct CameraEditView: View {
     @State var userName: String
     @State var password: String
     
- //   var onUpdate: (String, String, String, String, String, String, String) -> Void
     
- //   init(camera: Camera,
- //        onUpdate: @escaping (String, String, String, String, String, String, String) -> Void) {
+    // Image states
+    @State private var selectedImage: UIImage? = nil
+    @State private var selectedPhoto: PhotosPickerItem? = nil
+    @State private var showCamera = false
+    @State private var isUploading = false
+    @State private var uploadError: String? = nil
+    
     
     init(camera: CameraEntity) {
         
@@ -44,8 +49,6 @@ struct CameraEditView: View {
         _defaultGateway = State(initialValue: camera.defaultGateway ?? "")
         _userName = State(initialValue: camera.userName ?? "")
         _password = State(initialValue: camera.password ?? "")
-        
-//        self.onUpdate = onUpdate
     }
     
     var body: some View {
@@ -59,18 +62,113 @@ struct CameraEditView: View {
                 TextField("User Name", text: $userName)
                 SecureField("Password", text: $password)
             }
-        }
-        //.navigationTitle("Edit Camera")
-        .toolbar{
-            ToolbarItem(placement: .topBarTrailing) {
-                Button("Save") {
-//                    onUpdate(name,
-//                             location,
-//                             ipAddress,
-//                             subnetMask,
-//                             defaultGateway,
-//                             userName,
-//                             password)
+            
+            Section("Reference Image") {
+                            
+                            // Preview — selected image or existing from Firebase
+                            if let selected = selectedImage {
+                                Image(uiImage: selected)
+                                    .resizable()
+                                    .scaledToFit()
+                                    .frame(maxHeight: 200)
+                                    .cornerRadius(10)
+                            } else if let urlString = camera.imageUrl,
+                                      let url = URL(string: urlString) {
+                                AsyncImage(url: url) { image in
+                                    image
+                                        .resizable()
+                                        .scaledToFit()
+                                        .frame(maxHeight: 200)
+                                        .cornerRadius(10)
+                                } placeholder: {
+                                    ProgressView()
+                                        .frame(height: 200)
+                                }
+                            } else {
+                                HStack {
+                                    Image(systemName: "photo.on.rectangle")
+                                        .foregroundStyle(.secondary)
+                                    Text("No reference image yet")
+                                        .foregroundStyle(.secondary)
+                                }
+                            }
+                            
+                            // Take photo with camera
+                            Button {
+                                showCamera = true
+                            } label: {
+                                Label("Take Photo", systemImage: "camera")
+                            }
+                            
+                            // Pick from gallery
+                            PhotosPicker(selection: $selectedPhoto, matching: .images) {
+                                Label("Choose from Gallery", systemImage: "photo.on.rectangle")
+                            }
+                            .onChange(of: selectedPhoto) { _, item in
+                                Task {
+                                    if let data = try? await item?.loadTransferable(type: Data.self),
+                                       let image = UIImage(data: data) {
+                                        selectedImage = image
+                                    }
+                                }
+                            }
+                            
+                            // Error message
+                            if let error = uploadError {
+                                Text(error)
+                                    .foregroundStyle(.red)
+                                    .font(.caption)
+                            }
+                        }
+                    }
+                    .sheet(isPresented: $showCamera) {
+                        CameraPickerView(selectedImage: $selectedImage)
+                    }
+                    .toolbar {
+                        ToolbarItem(placement: .topBarTrailing) {
+                            // [CHANGED] single Save button — uploads image if selected, then saves
+                            Button {
+                                saveAll()
+                            } label: {
+                                if isUploading {
+                                    ProgressView()
+                                } else {
+                                    Text("Save")
+                                }
+                            }
+                            .disabled(name.isEmpty || location.isEmpty || isUploading)
+                        }
+                    }
+                }
+                
+                // [CHANGED] single save function — uploads image first if needed, then saves camera data
+                private func saveAll() {
+                    if let image = selectedImage, let cameraId = camera.id {
+                        // has new image — upload first, then save
+                        isUploading = true
+                        uploadError = nil
+                        
+                        ImageUploader.shared.uploadCameraImage(image: image, cameraId: cameraId) { result in
+                            DispatchQueue.main.async {
+                                isUploading = false
+                                switch result {
+                                case .success(let url):
+                                    camera.imageUrl = url
+                                    print("Image uploaded, URL:", url)
+                                    saveCamera()
+                                case .failure(let error):
+                                    uploadError = "Upload failed: \(error.localizedDescription)"
+                                    print("Upload error:", error)
+                                }
+                            }
+                        }
+                    } else {
+                        // no new image — just save camera data
+                        saveCamera()
+                    }
+                }
+                
+                private func saveCamera() {
                     dataHolder.updateCamera(
                         camera: camera,
                         name: name,
@@ -85,8 +183,44 @@ struct CameraEditView: View {
                     )
                     dismiss()
                 }
-                .disabled(name.isEmpty || location.isEmpty)
             }
-        }
-    }
-}
+             
+            // Camera picker — opens live camera
+            struct CameraPickerView: UIViewControllerRepresentable {
+                
+                @Binding var selectedImage: UIImage?
+                @Environment(\.dismiss) var dismiss
+                
+                func makeUIViewController(context: Context) -> UIImagePickerController {
+                    let picker = UIImagePickerController()
+                    picker.delegate = context.coordinator
+                    picker.sourceType = .camera
+                    return picker
+                }
+                
+                func updateUIViewController(_ uiViewController: UIImagePickerController, context: Context) {}
+                
+                func makeCoordinator() -> Coordinator {
+                    Coordinator(self)
+                }
+                
+                class Coordinator: NSObject, UIImagePickerControllerDelegate, UINavigationControllerDelegate {
+                    let parent: CameraPickerView
+                    
+                    init(_ parent: CameraPickerView) {
+                        self.parent = parent
+                    }
+                    
+                    func imagePickerController(_ picker: UIImagePickerController,
+                                               didFinishPickingMediaWithInfo info: [UIImagePickerController.InfoKey: Any]) {
+                        if let image = info[.originalImage] as? UIImage {
+                            parent.selectedImage = image
+                        }
+                        parent.dismiss()
+                    }
+                    
+                    func imagePickerControllerDidCancel(_ picker: UIImagePickerController) {
+                        parent.dismiss()
+                    }
+                }
+            }

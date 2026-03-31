@@ -72,9 +72,32 @@ struct CameraDetailView: View {
                 .padding()
             }
             else {
-                VStack {
-                    Text("Reference Camera View")
-                        .font(.headline)
+                VStack(spacing: 16) {
+                    if let urlString = camera.imageUrl,
+                       let url = URL(string: urlString) {
+                        AsyncImage(url: url) { image in
+                            image
+                                .resizable()
+                                .scaledToFit()
+                                .frame(maxHeight: 350)
+                                .cornerRadius(12)
+                        } placeholder: {
+                            ProgressView()
+                                .frame(height: 350)
+                        }
+                    } else {
+                        VStack(spacing: 8) {
+                            Image(systemName: "photo.on.rectangle")
+                                .font(.system(size: 60))
+                                .foregroundStyle(.secondary)
+                            Text("No reference image yet")
+                                .foregroundStyle(.secondary)
+                            Text("Edit the camera to add a reference photo")
+                                .font(.caption)
+                                .foregroundStyle(.secondary)
+                        }
+                        .frame(height: 350)
+                    }
                     Spacer()
                 }
                 .padding()
@@ -91,24 +114,10 @@ struct CameraDetailView: View {
         }
         .sheet(isPresented: $showEdit){
             NavigationStack {
-                //                CameraEditView(camera: camera) { newName, newLocation, newIp, newSubnet, newGateway, newUser, newPass in
-                //                    Task {
-                //                        await cameras.updateCamera(
-                //                            token: authManager.token,
-                //                            id: camera.id ?? "",
-                //                            newName: newName,
-                //                            newLocation: newLocation,
-                //                            newIpAddress: newIp,
-                //                            newSubnetMask: newSubnet,
-                //                            newDefaultGateway: newGateway,
-                //                            newUserName: newUser,
-                //                            newPassword: newPass,
-                //                            for: company
-                //                        )
-                //                    }
-                //                }
                 CameraEditView(camera: camera)
                     .environmentObject(authManager)
+                    .environmentObject(dataHolder)
+                    .environment(\.managedObjectContext, viewContext)
             }
         }
     }
