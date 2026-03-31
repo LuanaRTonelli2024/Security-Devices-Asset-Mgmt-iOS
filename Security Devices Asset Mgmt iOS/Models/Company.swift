@@ -6,3 +6,18 @@
 //
 
 import Foundation
+
+struct CompanyDTO: Codable {
+    let id: String?
+    let name: String?
+    let address: String?
+    let contact: String?
+    
+    enum CodingKeys: String, CodingKey {
+        case id = "_id"
+        case name
+        case address
+        case contact
+    }
+}
+
