@@ -7,6 +7,7 @@
 
 import SwiftUI
 import CoreData
+import MapKit
 
 struct CompanyEditView: View {
     
@@ -17,29 +18,22 @@ struct CompanyEditView: View {
     
     @Environment(\.dismiss) var dismiss
     
-//    var company: Company
+    @StateObject private var CompanyMVM: CompanyMapViewModel
+    
     var company: CompanyEntity
     
     @State var name: String
     @State var address: String
     @State var contact: String
     
-//    var onUpdate: (String, String?, String?) -> Void
-//    
-//    init(company: Company, onUpdate: @escaping(String, String?, String?) -> Void) {
-//        self.company = company
-//        
-//        _name = State(initialValue: company.name ?? "")
-//        _address = State(initialValue: company.address ?? "")
-//        _contact = State(initialValue: company.contact ?? "")
-//        self.onUpdate = onUpdate
-//    }
     
     init(company: CompanyEntity) {
         self.company = company
         _name    = State(initialValue: company.name    ?? "")
         _address = State(initialValue: company.address ?? "")
         _contact = State(initialValue: company.contact ?? "")
+        _CompanyMVM = StateObject(wrappedValue: CompanyMapViewModel(company: company))
+
     }
     
     var body: some View {
@@ -50,7 +44,25 @@ struct CompanyEditView: View {
                 TextField("Contact: ", text: $contact)
             }
             Section("Location"){
-                // mapkit
+                if let destination = CompanyMVM.destination {
+                        NavigationLink {
+                            CompanyMapView(company: company)
+                        } label: {
+                            Map(position: .constant(.region(MKCoordinateRegion(
+                                center: destination,
+                                span: MKCoordinateSpan(latitudeDelta: 1, longitudeDelta: 1)
+                            )))) {
+                                Marker(company.name ?? "", coordinate: destination)
+                                    .tint(.red)
+                            }
+                            .frame(height: 150)
+                            .clipShape(RoundedRectangle(cornerRadius: 10))
+                            .disabled(true)
+                        }
+                    } else {
+                        Text("No address available")
+                            .foregroundStyle(.secondary)
+                    }
             }
             Section {
                 NavigationLink {
@@ -61,10 +73,12 @@ struct CompanyEditView: View {
                 }
             }
         }
+        .task {
+            await CompanyMVM.geocodeCompanyAddress() //to geoCode the dest.
+        }
         .toolbar {
             ToolbarItem(placement: .topBarTrailing) {
                 Button("Save") {
-//                    onUpdate(name, address.isEmpty ? nil : address, contact.isEmpty ? nil : contact)
                     dataHolder.updateCompany(
                         company: company,
                         name: name,
