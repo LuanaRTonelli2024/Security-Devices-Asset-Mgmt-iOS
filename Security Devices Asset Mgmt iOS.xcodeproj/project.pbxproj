@@ -16,7 +16,6 @@
 		86C3A10E2F36551B0099A50C /* CodeScanner in Frameworks */ = {isa = PBXBuildFile; productRef = 86C3A10D2F36551B0099A50C /* CodeScanner */; };
 		86C3A1132F3671D80099A50C /* AuthManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 86C3A1122F3671D80099A50C /* AuthManager.swift */; };
 		86C3A1142F3671D80099A50C /* AuthGate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 86C3A1112F3671D80099A50C /* AuthGate.swift */; };
-		86C3A11A2F3671E80099A50C /* OnBoardingScrenView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 86C3A1192F3671E80099A50C /* OnBoardingScrenView.swift */; };
 		86C3A11C2F3671E80099A50C /* Camera.swift in Sources */ = {isa = PBXBuildFile; fileRef = 86C3A1162F3671E80099A50C /* Camera.swift */; };
 		86C3A11D2F3671E80099A50C /* AppUser.swift in Sources */ = {isa = PBXBuildFile; fileRef = 86C3A1152F3671E80099A50C /* AppUser.swift */; };
 		86C3A12E2F3671F40099A50C /* CameraAddView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 86C3A1222F3671F40099A50C /* CameraAddView.swift */; };
@@ -26,8 +25,6 @@
 		86C3A1322F3671F40099A50C /* CompanyAddView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 86C3A1262F3671F40099A50C /* CompanyAddView.swift */; };
 		86C3A1332F3671F40099A50C /* ProfileView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 86C3A12A2F3671F40099A50C /* ProfileView.swift */; };
 		86C3A1342F3671F40099A50C /* CameraDetailView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 86C3A1232F3671F40099A50C /* CameraDetailView.swift */; };
-		86C3A1362F3671F40099A50C /* LoginView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 86C3A1292F3671F40099A50C /* LoginView.swift */; };
-		86C3A1372F3671F40099A50C /* Validators.swift in Sources */ = {isa = PBXBuildFile; fileRef = 86C3A11E2F3671F40099A50C /* Validators.swift */; };
 		86C3A1392F3671F40099A50C /* CompanyView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 86C3A1272F3671F40099A50C /* CompanyView.swift */; };
 		86C3A13A2F3671F40099A50C /* HomeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 86C3A1282F3671F40099A50C /* HomeView.swift */; };
 		86C3A13B2F3671F40099A50C /* CameraEditView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 86C3A1242F3671F40099A50C /* CameraEditView.swift */; };
@@ -42,10 +39,7 @@
 		CDF261322F7B4FEB001D9D8E /* CompanyMapViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = CDF261312F7B4FEB001D9D8E /* CompanyMapViewModel.swift */; };
 		DE05304D2F609F5700AC8DBA /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = DE05304C2F609F5700AC8DBA /* GoogleService-Info.plist */; };
 		DE1072032F7A134500B5A177 /* APISync.swift in Sources */ = {isa = PBXBuildFile; fileRef = DE1072022F7A134500B5A177 /* APISync.swift */; };
-		DE190D7E2F524C7000B0C1C6 /* CameraViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = DE190D7D2F524C7000B0C1C6 /* CameraViewModel.swift */; };
 		DE9EE3C02F529FFE00A992FE /* CompanyEditView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DE9EE3BF2F529FFE00A992FE /* CompanyEditView.swift */; };
-		DEA4F9562F4E2181005371C3 /* NetworkError.swift in Sources */ = {isa = PBXBuildFile; fileRef = DEA4F9552F4E2181005371C3 /* NetworkError.swift */; };
-		DEA4F95B2F4E2345005371C3 /* CompanyViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = DEA4F95A2F4E2345005371C3 /* CompanyViewModel.swift */; };
 		DEC8D7292F58F7F40059A6AB /* CameraRowView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DEC8D7282F58F7F40059A6AB /* CameraRowView.swift */; };
 		DEDC6BD42F5208EE0061B7BF /* Company.swift in Sources */ = {isa = PBXBuildFile; fileRef = DEDC6BD32F5208EE0061B7BF /* Company.swift */; };
 /* End PBXBuildFile section */
@@ -62,8 +56,6 @@
 		86C3A1122F3671D80099A50C /* AuthManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthManager.swift; sourceTree = "<group>"; };
 		86C3A1152F3671E80099A50C /* AppUser.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppUser.swift; sourceTree = "<group>"; };
 		86C3A1162F3671E80099A50C /* Camera.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Camera.swift; sourceTree = "<group>"; };
-		86C3A1192F3671E80099A50C /* OnBoardingScrenView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OnBoardingScrenView.swift; sourceTree = "<group>"; };
-		86C3A11E2F3671F40099A50C /* Validators.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Validators.swift; sourceTree = "<group>"; };
 		86C3A1222F3671F40099A50C /* CameraAddView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CameraAddView.swift; sourceTree = "<group>"; };
 		86C3A1232F3671F40099A50C /* CameraDetailView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CameraDetailView.swift; sourceTree = "<group>"; };
 		86C3A1242F3671F40099A50C /* CameraEditView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CameraEditView.swift; sourceTree = "<group>"; };
@@ -71,7 +63,6 @@
 		86C3A1262F3671F40099A50C /* CompanyAddView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CompanyAddView.swift; sourceTree = "<group>"; };
 		86C3A1272F3671F40099A50C /* CompanyView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CompanyView.swift; sourceTree = "<group>"; };
 		86C3A1282F3671F40099A50C /* HomeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeView.swift; sourceTree = "<group>"; };
-		86C3A1292F3671F40099A50C /* LoginView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginView.swift; sourceTree = "<group>"; };
 		86C3A12A2F3671F40099A50C /* ProfileView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileView.swift; sourceTree = "<group>"; };
 		86C3A12B2F3671F40099A50C /* QRCodeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QRCodeView.swift; sourceTree = "<group>"; };
 		86C3A12C2F3671F40099A50C /* RegisterView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegisterView.swift; sourceTree = "<group>"; };
@@ -83,10 +74,7 @@
 		CDF261312F7B4FEB001D9D8E /* CompanyMapViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CompanyMapViewModel.swift; sourceTree = "<group>"; };
 		DE05304C2F609F5700AC8DBA /* GoogleService-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		DE1072022F7A134500B5A177 /* APISync.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = APISync.swift; sourceTree = "<group>"; };
-		DE190D7D2F524C7000B0C1C6 /* CameraViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CameraViewModel.swift; sourceTree = "<group>"; };
 		DE9EE3BF2F529FFE00A992FE /* CompanyEditView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CompanyEditView.swift; sourceTree = "<group>"; };
-		DEA4F9552F4E2181005371C3 /* NetworkError.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkError.swift; sourceTree = "<group>"; };
-		DEA4F95A2F4E2345005371C3 /* CompanyViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CompanyViewModel.swift; sourceTree = "<group>"; };
 		DEC8D7282F58F7F40059A6AB /* CameraRowView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CameraRowView.swift; sourceTree = "<group>"; };
 		DEDC6BD32F5208EE0061B7BF /* Company.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Company.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -142,8 +130,6 @@
 				86C3A1112F3671D80099A50C /* AuthGate.swift */,
 				86C3A1122F3671D80099A50C /* AuthManager.swift */,
 				86C3A1182F3671E80099A50C /* Models */,
-				86C3A1192F3671E80099A50C /* OnBoardingScrenView.swift */,
-				86C3A11E2F3671F40099A50C /* Validators.swift */,
 				86C3A1212F3671F40099A50C /* ViewModel */,
 				86C3A12D2F3671F40099A50C /* Views */,
 				DE05304C2F609F5700AC8DBA /* GoogleService-Info.plist */,
@@ -165,7 +151,6 @@
 				DE1072022F7A134500B5A177 /* APISync.swift */,
 				86C3A1152F3671E80099A50C /* AppUser.swift */,
 				86C3A1162F3671E80099A50C /* Camera.swift */,
-				DEA4F9552F4E2181005371C3 /* NetworkError.swift */,
 				DEDC6BD32F5208EE0061B7BF /* Company.swift */,
 				CD0339ED2F5CAF6100B771EA /* DataHolder.swift */,
 			);
@@ -175,8 +160,6 @@
 		86C3A1212F3671F40099A50C /* ViewModel */ = {
 			isa = PBXGroup;
 			children = (
-				DEA4F95A2F4E2345005371C3 /* CompanyViewModel.swift */,
-				DE190D7D2F524C7000B0C1C6 /* CameraViewModel.swift */,
 				CDF261152F77288E001D9D8E /* LocationManager.swift */,
 				CDF261312F7B4FEB001D9D8E /* CompanyMapViewModel.swift */,
 			);
@@ -196,7 +179,6 @@
 				DE9EE3BF2F529FFE00A992FE /* CompanyEditView.swift */,
 				CD033A312F5FA85C00B771EA /* ImageReferenceView.swift */,
 				86C3A1282F3671F40099A50C /* HomeView.swift */,
-				86C3A1292F3671F40099A50C /* LoginView.swift */,
 				86C3A12A2F3671F40099A50C /* ProfileView.swift */,
 				86C3A12B2F3671F40099A50C /* QRCodeView.swift */,
 				86C3A12C2F3671F40099A50C /* RegisterView.swift */,
@@ -309,23 +291,17 @@
 				86C3A1332F3671F40099A50C /* ProfileView.swift in Sources */,
 				86C3A1342F3671F40099A50C /* CameraDetailView.swift in Sources */,
 				CDF261162F77288E001D9D8E /* LocationManager.swift in Sources */,
-				86C3A1362F3671F40099A50C /* LoginView.swift in Sources */,
-				86C3A1372F3671F40099A50C /* Validators.swift in Sources */,
 				86C3A1392F3671F40099A50C /* CompanyView.swift in Sources */,
 				DEDC6BD42F5208EE0061B7BF /* Company.swift in Sources */,
 				CDF261322F7B4FEB001D9D8E /* CompanyMapViewModel.swift in Sources */,
 				86C3A13A2F3671F40099A50C /* HomeView.swift in Sources */,
 				DE9EE3C02F529FFE00A992FE /* CompanyEditView.swift in Sources */,
-				DEA4F95B2F4E2345005371C3 /* CompanyViewModel.swift in Sources */,
 				DEC8D7292F58F7F40059A6AB /* CameraRowView.swift in Sources */,
 				86C3A13B2F3671F40099A50C /* CameraEditView.swift in Sources */,
 				3D3D479B2F3509E700E92517 /* Security_Devices_Asset_Mgmt_iOSApp.swift in Sources */,
-				DEA4F9562F4E2181005371C3 /* NetworkError.swift in Sources */,
-				86C3A11A2F3671E80099A50C /* OnBoardingScrenView.swift in Sources */,
 				86C3A11C2F3671E80099A50C /* Camera.swift in Sources */,
 				86C3A11D2F3671E80099A50C /* AppUser.swift in Sources */,
 				3D3D47A72F3509ED00E92517 /* Security_Devices_Asset_Mgmt_iOS.xcdatamodeld in Sources */,
-				DE190D7E2F524C7000B0C1C6 /* CameraViewModel.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
