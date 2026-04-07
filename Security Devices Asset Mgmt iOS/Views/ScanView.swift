@@ -17,6 +17,7 @@ struct ScanView: View {
     @State private var scannedCode: String?
     @State private var isShowingScanner: Bool = true
     @State private var cameraFound: CameraEntity?
+    @State private var companyFound: CompanyEntity?
     @State private var ShowCamera: Bool = false
     @State private var notFound: Bool = false
     
@@ -52,7 +53,7 @@ struct ScanView: View {
             .navigationTitle("Scan QR")
             .navigationDestination(isPresented: $ShowCamera) {
                 if let camera = cameraFound {
-                    //CameraDetailView(company: <#Company#>, cameras: <#CameraViewModel#>, camera: <#Camera#>)
+                    //CameraDetailView(company: <#Company#>, camera: <#Camera#>)
                 }
             }
         }

@@ -12,13 +12,10 @@ import CoreData
 struct CompanyView: View {
     
     @EnvironmentObject var authManager: AuthManager
-    //@StateObject var companies = CompanyViewModel()
     
     @Environment(\.managedObjectContext) private var viewContext
     @EnvironmentObject var dataHolder: DataHolder
     
-    
-    //Toolbar
     @State private var showNewCompany = false
     
     var body: some View {
@@ -26,18 +23,7 @@ struct CompanyView: View {
             List {
                 ForEach(dataHolder.companies) { company in
                     NavigationLink {
-//                        CompanyEditView(company: company) { newName, newAddress, newContact in
-//                            Task {
-//                                await companies.updateCompany(
-//                                    token: authManager.token,
-//                                    id: company.id ?? "",
-//                                    newName: newName,
-//                                    newAddress: newAddress,
-//                                    newContact: newContact
-//                                    
-//                                )
-//                            }
-//                        }
+
                         CompanyEditView(company: company)
                             .environmentObject(authManager)
                             .environmentObject(dataHolder)
@@ -46,9 +32,7 @@ struct CompanyView: View {
                     }
                     .swipeActions {
                         Button(role: .destructive) {
-//                            Task {
-//                                await companies.deleteCompany(token: authManager.token, id: company.id)
-//                            }
+
                             dataHolder.deleteCompany(company, viewContext)
                         } label: {
                             Label("Delete", systemImage: "trash")
@@ -57,13 +41,7 @@ struct CompanyView: View {
                 }
             }
         }
-//        .onAppear {
-//            Task {
-//                await companies.fetchCompanies(token: authManager.token)
-//            }
-//        }
-        //        .navigationTitle("Companies")
-        //        Spacer()
+
         .onAppear{
             dataHolder.syncAll(viewContext)
         }
@@ -80,7 +58,7 @@ struct CompanyView: View {
         }
         .sheet(isPresented: $showNewCompany){
             NavigationStack {
-//                CompanyAddView(companies: companies)
+
                 CompanyAddView()
                     .environmentObject(authManager)
                     .environmentObject(dataHolder)
