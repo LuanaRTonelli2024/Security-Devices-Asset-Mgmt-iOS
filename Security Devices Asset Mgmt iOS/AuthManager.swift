@@ -153,4 +153,25 @@ class AuthManager: ObservableObject {
             }
         }
     }
+    
+    func updatePassword(currentPassword: String, newPassword: String, completion: @escaping (Result<Void, Error>) -> Void) {
+         guard let user = Auth.auth().currentUser,
+               let email = user.email else {
+             return completion(.failure(SimpleError("Unable to fetch User")))
+         }
+        
+        let credential = EmailAuthProvider.credential(withEmail: email, password: currentPassword)
+        user.reauthenticate(with: credential) { _, error in
+            if let error = error {
+                return completion(.failure(SimpleError("Current password is incorrect")))
+            }
+            
+            user.updatePassword(to: newPassword) { error in
+                if let error = error {
+                    return completion(.failure(error))
+                }
+                completion(.success(()))
+            }
+        }
+    }
 }

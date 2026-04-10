@@ -91,9 +91,12 @@ struct CompanyMapView: View {
                 
                 Picker("Transport", selection: $CompanyMVM.transportType) {
                     Text("Automobile").tag(MKDirectionsTransportType.automobile)
+                        .font(.system(size: 14, design: .serif))
                     Text("Transit").tag(MKDirectionsTransportType.transit)
+                        .font(.system(size: 14, design: .serif))
                     Text("Walking").tag(MKDirectionsTransportType.walking)
-                    Text("Cycling").tag(MKDirectionsTransportType.cycling)
+                        .font(.system(size: 14, design: .serif))
+                    
                 }
                 .pickerStyle(.segmented)
                 .onChange(of: CompanyMVM.transportType) { _ in
@@ -104,6 +107,7 @@ struct CompanyMapView: View {
                 
                 if CompanyMVM.isLoading {
                     ProgressView("Calculating route...")
+                        .font(.system(size: 14, design: .serif))
                         .tint(.white)
                         .frame(width: 24, height: 24)
                         .padding(.vertical, 10)
@@ -114,7 +118,7 @@ struct CompanyMapView: View {
                 
                 if let errorMessage = CompanyMVM.errorMessage {
                     Text(errorMessage)
-                        .font(.footnote)
+                        .font(.system(size: 13, design: .serif))
                         .foregroundStyle(.red)
                         .frame(maxWidth: .infinity, alignment: .leading)
                 }

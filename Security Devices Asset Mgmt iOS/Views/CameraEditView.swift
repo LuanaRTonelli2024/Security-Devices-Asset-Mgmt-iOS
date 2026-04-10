@@ -55,12 +55,19 @@ struct CameraEditView: View {
         Form {
             Section("Edit Camera") {
                 TextField("Name", text: $name)
+                    .font(.system(size: 15, design: .serif))
                 TextField("Location", text: $location)
+                    .font(.system(size: 15, design: .serif))
                 TextField("IP Address", text: $ipAddress)
+                    .font(.system(size: 15, design: .serif))
                 TextField("Subnet Mask", text: $subnetMask)
+                    .font(.system(size: 15, design: .serif))
                 TextField("Default Gateway", text: $defaultGateway)
+                    .font(.system(size: 15, design: .serif))
                 TextField("User Name", text: $userName)
+                    .font(.system(size: 15, design: .serif))
                 SecureField("Password", text: $password)
+                    .font(.system(size: 15, design: .serif))
             }
             
             Section("Reference Image") {
@@ -89,6 +96,7 @@ struct CameraEditView: View {
                                     Image(systemName: "photo.on.rectangle")
                                         .foregroundStyle(.secondary)
                                     Text("No reference image yet")
+                                        .font(.system(size: 15, design: .serif))
                                         .foregroundStyle(.secondary)
                                 }
                             }
@@ -116,8 +124,9 @@ struct CameraEditView: View {
                             // Error message
                             if let error = uploadError {
                                 Text(error)
+                                    .font(.system(size: 12, design: .serif))
                                     .foregroundStyle(.red)
-                                    .font(.caption)
+                                    
                             }
                         }
                     }
@@ -134,8 +143,10 @@ struct CameraEditView: View {
                                     ProgressView()
                                 } else {
                                     Text("Save")
+                                        .font(.system(size: 15, design: .serif))
                                 }
                             }
+                            .font(.system(size: 15, design: .serif))
                             .disabled(name.isEmpty || location.isEmpty || isUploading)
                         }
                     }

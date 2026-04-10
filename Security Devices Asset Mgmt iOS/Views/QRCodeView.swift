@@ -75,6 +75,4 @@ struct QRCodeView: View {
 }
 
 
-//#Preview {
-//    QRCodeView()
-//}
+

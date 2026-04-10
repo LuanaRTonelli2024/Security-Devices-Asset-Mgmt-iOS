@@ -33,8 +33,11 @@ struct CameraDetailView: View {
         VStack {
             Picker("", selection: $selectedTab) {
                 Text("Info").tag("Info")
+                    .font(.system(size: 14, design: .serif))
                 Text("QR Code").tag("QR Code")
+                    .font(.system(size: 14, design: .serif))
                 Text("Reference View").tag("Reference View")
+                    .font(.system(size: 14, design: .serif))
             }
             .pickerStyle(.segmented)
             .padding()
@@ -43,16 +46,23 @@ struct CameraDetailView: View {
                 Form {
                     Section("Basic Info"){
                         Text("Name:  \(camera.name ?? "Unknown")")
+                            .font(.system(size: 15, design: .serif))
                         Text("Location: \(camera.location ?? "Unknown")")
+                            .font(.system(size: 15, design: .serif))
                     }
                     Section("Network Info"){
                         Text("IP Address: \(camera.ipAddress ?? "-")")
+                            .font(.system(size: 15, design: .serif))
                         Text("Subnet Mask: \(camera.subnetMask ?? "-")")
+                            .font(.system(size: 15, design: .serif))
                         Text("Default Gateway: \(camera.defaultGateway ?? "-")")
+                            .font(.system(size: 15, design: .serif))
                     }
                     Section("Admin Info"){
                         Text("User Name: \(camera.userName ?? "-")")
+                            .font(.system(size: 15, design: .serif))
                         Text("Password: \(camera.password ?? "-")")
+                            .font(.system(size: 15, design: .serif))
                     }
                 }
             }
@@ -64,6 +74,7 @@ struct CameraDetailView: View {
                         QRCodeView(data: id)
                     } else {
                         Text("Camera ID not available")
+                            .font(.system(size: 15, design: .serif))
                             .foregroundColor(.red)
                     }
                     
@@ -91,10 +102,10 @@ struct CameraDetailView: View {
                                 .font(.system(size: 60))
                                 .foregroundStyle(.secondary)
                             Text("No reference image yet")
+                                .font(.system(size: 15, design: .serif))
                                 .foregroundStyle(.secondary)
                             Text("Edit the camera to add a reference photo")
-                                .font(.caption)
-                                .foregroundStyle(.secondary)
+                                .font(.system(size: 13, design: .serif))            .foregroundStyle(.secondary)
                         }
                         .frame(height: 350)
                     }

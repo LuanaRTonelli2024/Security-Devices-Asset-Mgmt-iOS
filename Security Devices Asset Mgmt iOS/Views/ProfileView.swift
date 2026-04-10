@@ -12,68 +12,82 @@ struct ProfileView: View {
     @EnvironmentObject var authManager: AuthManager
     
     //@ObservedObject private var auth = AuthManager.shared
-    
-    @State private var newName = ""
     @State private var errorMessage: String?
+    @State private var showEditSheet = false
     
     var body: some View {
         VStack {
             Text("Profile")
-                .font(.headline)
-                .background(Color(.systemBackground))
-            
-            
+                .font(.system(size: 28, weight: .bold, design: .serif))
+                .frame(maxWidth: .infinity, alignment: .leading)
+                .padding(.horizontal, 24)
+                .padding(.top, 16)
+
             Form {
                 Section("Profile") {
-                    Text("Email: \(authManager.currentUser?.email ?? "-")")
-                    Text("Display Name: \(authManager.currentUser?.displayName ?? "-")")
-                    Text("Is Active: \(authManager.currentUser?.isActive == true ? "Yes" : "False")")
-                }
-                
-                Section("Update Display Name") {
-                    TextField("New Display Name", text: $newName)
-                    Button("Save") {
-                        guard !newName.trimmingCharacters(in: .whitespaces).isEmpty
-                        else {
-                            self.errorMessage = "display name cannot be empty"
-                            return
-                        }
-                        
-                        authManager.updateProfile(displayName: newName) { result in
-                            switch result {
-                            case .success:
-                                self.errorMessage = nil
-                            case .failure(let failure):
-                                self.errorMessage = failure.localizedDescription
-                            }
-                        }
+                    HStack {
+                        Image(systemName: "envelope")
+                            .foregroundColor(.secondary)
+                            .frame(width: 20)
+                        Text(authManager.currentUser?.email ?? "-")
+                            .font(.system(size: 15, design: .serif))
+                    }
+                    HStack {
+                        Image(systemName: "person")
+                            .foregroundColor(.secondary)
+                            .frame(width: 20)
+                        Text(authManager.currentUser?.displayName ?? "-")
+                            .font(.system(size: 15, design: .serif))
+                    }
+                    HStack {
+                        Image(systemName: "circle.fill")
+                            .foregroundColor(authManager.currentUser?.isActive == true ? .green : .secondary)
+                            .frame(width: 20)
+                            .font(.system(size: 8))
+                        Text(authManager.currentUser?.isActive == true ? "Active" : "Inactive")
+                            .font(.system(size: 15, design: .serif))
                     }
                 }
-                
-                if let errorMessage = errorMessage {
-                    Text(errorMessage).foregroundStyle(.red)
-                }
-                
-                Button(role: .destructive) {
-                    let result = authManager.logout()
-                    if case .failure(let failure) = result {
-                        self.errorMessage = failure.localizedDescription
-                    } else {
-                        self.errorMessage = nil
+
+                Section {
+                    Button(action: { showEditSheet = true }) {
+                        HStack {
+                            Image(systemName: "pencil")
+                            Text("Edit profile")
+                                .font(.system(size: 15, design: .serif))
+                        }
+                        .foregroundColor(Color(red: 0.1, green: 0.37, blue: 0.71))
                     }
-                } label: {
-                    Text("Sign Out")
+                }
+
+
+                Section {
+                    Button(role: .destructive) {
+                        let result = authManager.logout()
+                        if case .failure(let failure) = result {
+                            self.errorMessage = failure.localizedDescription
+                        } else {
+                            self.errorMessage = nil
+                        }
+                    } label: {
+                        HStack {
+                            Image(systemName: "rectangle.portrait.and.arrow.right")
+                            Text("Sign out")
+                                .font(.system(size: 15, design: .serif))
+                        }
+                    }
                 }
             }
             .onAppear {
-                authManager.fetchCurrentAppUser { _ in
-                    //leave it empty
-                    //for re-fetching purposes
-                    //when logged in it will profile page, we need fetch here.
-                }
+                authManager.fetchCurrentAppUser { _ in }
             }
         }
         .padding(.top, 30)
+        .sheet(isPresented: $showEditSheet) {
+            EditProfileSheet()
+                .environmentObject(authManager)
+        }
+        
     }
 }
 

@@ -17,6 +17,7 @@ struct ImageReferenceView: View {
                     
                 } label: {
                     Label("Add Image", systemImage: "plus")
+                        .font(.system(size: 15, design: .serif))
                         .frame(maxWidth: .infinity)
                         .padding()
                         .background(Color.blue)

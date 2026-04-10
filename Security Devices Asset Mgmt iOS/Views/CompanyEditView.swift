@@ -40,8 +40,11 @@ struct CompanyEditView: View {
         Form {
             Section("Company Information") {
                 TextField("Company name: ", text: $name)
+                    .font(.system(size: 15, design: .serif))
                 TextField("Address: ", text: $address)
+                    .font(.system(size: 15, design: .serif))
                 TextField("Contact: ", text: $contact)
+                    .font(.system(size: 15, design: .serif))
             }
             Section("Location"){
                 if let destination = CompanyMVM.destination {
@@ -61,6 +64,7 @@ struct CompanyEditView: View {
                         }
                     } else {
                         Text("No address available")
+                            .font(.system(size: 15, design: .serif))
                             .foregroundStyle(.secondary)
                     }
             }
@@ -70,6 +74,7 @@ struct CompanyEditView: View {
                         .environmentObject(authManager)
                 } label: {
                     Label("Cameras", systemImage: "web.camera")
+                        .font(.system(size: 15, design: .serif))
                 }
             }
         }
@@ -88,6 +93,7 @@ struct CompanyEditView: View {
                     )
                     dismiss()
                 }
+                .font(.system(size: 15, design: .serif))
                 .disabled(name.isEmpty)
             }
         }

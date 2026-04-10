@@ -8,18 +8,14 @@
 import SwiftUI
 
 struct CameraRowView: View {
-    
-//    let camera: Camera
+
     let camera: CameraEntity
-    
-//    @ObservedObject var cameras: CameraViewModel
-    
-//    let company: Company
+
     let company: CompanyEntity
 
     var body: some View {
         NavigationLink(
-            //destination: CameraDetailView(company: company, cameras: cameras, camera: camera)
+            
             destination: CameraDetailView(company: company, camera: camera)
         ) {
             HStack(alignment: .center, spacing: 12) {
@@ -29,9 +25,9 @@ struct CameraRowView: View {
 
                 VStack(alignment: .leading, spacing: 4) {
                     Text(camera.name ?? "Unknow")
-                        .font(.headline)
+                        .font(.system(size: 17, weight: .semibold, design: .serif))
                     Text(camera.location ?? "Unknow")
-                        .font(.subheadline)
+                        .font(.system(size: 15, design: .serif))
                         .foregroundStyle(.secondary)
                 }
             }

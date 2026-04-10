@@ -34,6 +34,7 @@
 		CD0339EE2F5CAF6100B771EA /* DataHolder.swift in Sources */ = {isa = PBXBuildFile; fileRef = CD0339ED2F5CAF6100B771EA /* DataHolder.swift */; };
 		CD0339F92F5D082D00B771EA /* ScanView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CD0339F82F5D082D00B771EA /* ScanView.swift */; };
 		CD033A322F5FA85C00B771EA /* ImageReferenceView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CD033A312F5FA85C00B771EA /* ImageReferenceView.swift */; };
+		CDBF58612F8850190071880D /* EditProfileSheet.swift in Sources */ = {isa = PBXBuildFile; fileRef = CDBF58602F8850190071880D /* EditProfileSheet.swift */; };
 		CDF261162F77288E001D9D8E /* LocationManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = CDF261152F77288E001D9D8E /* LocationManager.swift */; };
 		CDF261182F772F70001D9D8E /* CompanyMapView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CDF261172F772F70001D9D8E /* CompanyMapView.swift */; };
 		CDF261322F7B4FEB001D9D8E /* CompanyMapViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = CDF261312F7B4FEB001D9D8E /* CompanyMapViewModel.swift */; };
@@ -75,6 +76,7 @@
 		CD0339ED2F5CAF6100B771EA /* DataHolder.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DataHolder.swift; sourceTree = "<group>"; };
 		CD0339F82F5D082D00B771EA /* ScanView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ScanView.swift; sourceTree = "<group>"; };
 		CD033A312F5FA85C00B771EA /* ImageReferenceView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageReferenceView.swift; sourceTree = "<group>"; };
+		CDBF58602F8850190071880D /* EditProfileSheet.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditProfileSheet.swift; sourceTree = "<group>"; };
 		CDF261152F77288E001D9D8E /* LocationManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocationManager.swift; sourceTree = "<group>"; };
 		CDF261172F772F70001D9D8E /* CompanyMapView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CompanyMapView.swift; sourceTree = "<group>"; };
 		CDF261312F7B4FEB001D9D8E /* CompanyMapViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CompanyMapViewModel.swift; sourceTree = "<group>"; };
@@ -201,6 +203,7 @@
 				86C3A12C2F3671F40099A50C /* RegisterView.swift */,
 				CD0339F82F5D082D00B771EA /* ScanView.swift */,
 				CDF261172F772F70001D9D8E /* CompanyMapView.swift */,
+				CDBF58602F8850190071880D /* EditProfileSheet.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -318,6 +321,7 @@
 				DEC8D7292F58F7F40059A6AB /* CameraRowView.swift in Sources */,
 				DE7F6C482F7B8C9C00D60376 /* CameraCreateRequest.swift in Sources */,
 				86C3A13B2F3671F40099A50C /* CameraEditView.swift in Sources */,
+				CDBF58612F8850190071880D /* EditProfileSheet.swift in Sources */,
 				3D3D479B2F3509E700E92517 /* Security_Devices_Asset_Mgmt_iOSApp.swift in Sources */,
 				DE7F6C4A2F7B8CA900D60376 /* CameraUpdateRequest.swift in Sources */,
 				86C3A11C2F3671E80099A50C /* Camera.swift in Sources */,

@@ -19,7 +19,7 @@ struct CompanyAddView: View {
     
     @Environment(\.dismiss) var dismiss
     
-//    @ObservedObject var companies: CompanyViewModel
+
     @State private var newCompanyName: String = ""
     @State private var newCompanyAddress: String = ""
     @State private var newCompanyContact: String = ""
@@ -29,22 +29,21 @@ struct CompanyAddView: View {
         Form {
             Section("Basic Info"){
                 TextField("Name: ", text: $newCompanyName)
+                    .font(.system(size: 15, design: .serif))
                 TextField("Address: ", text: $newCompanyAddress)
+                    .font(.system(size: 15, design: .serif))
                 TextField("Contact: ", text: $newCompanyContact)
+                    .font(.system(size: 15, design: .serif))
             }
         }
         .navigationTitle("New Company")
         .navigationBarTitleDisplayMode(.inline)
         .toolbar {
             
-            // Save button
+
             ToolbarItem(placement: .confirmationAction) {
                 Button("Save") {
-//                    Task {
-//                        await companies.createCompany(token: authManager.token, name: newCompanyName)
-//                        dismiss()
-//                    }
-                    
+
                     dataHolder.createCompany(
                         name: newCompanyName,
                         address: newCompanyAddress.isEmpty ? nil : newCompanyAddress,
@@ -53,6 +52,7 @@ struct CompanyAddView: View {
                     )
                     dismiss()
                 }
+                .font(.system(size: 15, design: .serif))
                 .disabled(newCompanyName.isEmpty)
             }
         }

@@ -38,8 +38,11 @@ struct CameraAddView: View {
         VStack {
             Picker("", selection: $selectedTab) {
                 Text("Info").tag("Info")
+                    .font(.system(size: 14, design: .serif))
                 Text("QR Code").tag("QR Code")
+                    .font(.system(size: 14, design: .serif))
                 Text("Reference View").tag("Reference View")
+                    .font(.system(size: 14, design: .serif))
             }
             .pickerStyle(.segmented)
             .padding()
@@ -48,22 +51,29 @@ struct CameraAddView: View {
                 Form {
                     Section("Basic Info"){
                         TextField("Name: ", text: $newCameraName)
+                            .font(.system(size: 15, design: .serif))
                         TextField("Location: ", text: $newCameraLocation)
+                            .font(.system(size: 15, design: .serif))
                     }
                     Section("Network Info"){
                         TextField("IP Address: ", text: $newCameraIPAddress)
+                            .font(.system(size: 15, design: .serif))
                         TextField("Subnet Mask: ", text: $newCameraSubnetMask)
+                            .font(.system(size: 15, design: .serif))
                         TextField("Default Gateway: ", text: $newCameraDefaultGateway)
+                            .font(.system(size: 15, design: .serif))
                     }
                     Section("Admin Info"){
                         TextField("User Name: ", text: $newCameraUserName)
+                            .font(.system(size: 15, design: .serif))
                         TextField("Password: ", text: $newCameraPassword)
+                            .font(.system(size: 15, design: .serif))
                     }
                 }
             } else if selectedTab == "QR Code" {
                 VStack {
                     Text("QR Code will be available after saving.")
-                        .font(.headline)
+                        .font(.system(size: 17, weight: .semibold, design: .serif))
                     Spacer()
                 }
                 .padding()
@@ -71,7 +81,7 @@ struct CameraAddView: View {
             else {
                 VStack {
                     Text("Reference Camera View is not available.")
-                        .font(.headline)
+                        .font(.system(size: 17, weight: .semibold, design: .serif))
                     Spacer()
                 }
                 .padding()
@@ -80,20 +90,7 @@ struct CameraAddView: View {
         .toolbar {
             ToolbarItem(placement: .confirmationAction) {
                 Button("Save"){
-                    //                    Task {
-                    //                        await cameras.createCamera(
-                    //                            token: authManager.token,
-                    //                            name: newCameraName,
-                    //                            location: newCameraLocation,
-                    //                            ipAddress: newCameraIPAddress,
-                    //                            subnetMask: newCameraSubnetMask,
-                    //                            defaultGateway: newCameraDefaultGateway,
-                    //                            userName: newCameraUserName,
-                    //                            password: newCameraPassword,
-                    //                            for: company
-                    //                        )
-                    //                        dismiss()
-                    //                    }
+                    
                     dataHolder.createCamera(
                         name: newCameraName,
                         location: newCameraLocation.isEmpty ? nil : newCameraLocation,
@@ -107,6 +104,7 @@ struct CameraAddView: View {
                     )
                     dismiss()
                 }
+                .font(.system(size: 15, design: .serif))
                 .disabled(newCameraName.isEmpty || newCameraLocation.isEmpty)
             }
         }

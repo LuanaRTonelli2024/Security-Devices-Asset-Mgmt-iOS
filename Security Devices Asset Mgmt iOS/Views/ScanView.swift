@@ -36,7 +36,7 @@ struct ScanView: View {
                     VStack(spacing: 16){
                         Text("Camera not found")
                         Image(systemName: "xmark.circle.fill")
-                            .font(.system(size: 60))
+                            .font(.system(size: 17, design: .serif))
                             .foregroundStyle(.red)
                         
                         Button("Try again"){
@@ -44,6 +44,7 @@ struct ScanView: View {
                             scannedCode = nil
                             isShowingScanner = true
                         }
+                        .font(.system(size: 15, design: .serif))
                         .buttonStyle(.borderedProminent)
                     }
                     .frame(maxWidth: .infinity, maxHeight: .infinity)

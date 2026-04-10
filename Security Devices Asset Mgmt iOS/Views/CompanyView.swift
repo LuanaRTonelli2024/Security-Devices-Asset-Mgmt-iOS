@@ -29,6 +29,7 @@ struct CompanyView: View {
                             .environmentObject(dataHolder)
                     } label: {
                         Label(company.name ?? "", systemImage: "building")
+                            .font(.system(size: 15, design: .serif))
                     }
                     .swipeActions {
                         Button(role: .destructive) {
@@ -36,6 +37,7 @@ struct CompanyView: View {
                             dataHolder.deleteCompany(company, viewContext)
                         } label: {
                             Label("Delete", systemImage: "trash")
+                                .font(.system(size: 15, design: .serif))
                         }
                     }
                 }
