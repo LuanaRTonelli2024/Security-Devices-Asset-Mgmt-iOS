@@ -17,7 +17,7 @@ class AppDelegate: NSObject, UIApplicationDelegate {
 }
 
 
-@main
+@main	
 struct Security_Devices_Asset_Mgmt_iOSApp: App {
     
     // register app delegate for Firebase setup
